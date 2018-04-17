@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>edit_supplier</class>
+ <widget class="QDialog" name="edit_supplier">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>470</width>
+    <height>210</height>
+   </rect>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::NoContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Create Supplier</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <widget class="QLabel" name="lbl_title">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>461</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+     <pointsize>26</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(85, 170, 0);</string>
+   </property>
+   <property name="text">
+    <string>Supplier Creation</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>50</y>
+     <width>461</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="lbl_name">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 170, 0);</string>
+      </property>
+      <property name="text">
+       <string>Supplier Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLineEdit" name="txt_name">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit, QLineEdit:hover {
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #dddddd;
+    background-color:rgba(0,0,0,0);
+}
+
+QLineEdit:editable{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #b2dfdb;
+}
+
+QLineEdit:disabled{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+QLineEdit:focus{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+    color: #111111;
+}
+QLineEdit:pressed {
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+}
+</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QLineEdit" name="txt_last_mac">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit, QLineEdit:hover {
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #dddddd;
+    background-color:rgba(0,0,0,0);
+}
+
+QLineEdit:editable{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #b2dfdb;
+}
+
+QLineEdit:disabled{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+QLineEdit:focus{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+    color: #111111;
+}
+QLineEdit:pressed {
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+}
+</string>
+      </property>
+      <property name="inputMask">
+       <string>xx-xx-xx-xx-xx</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="lbl_code">
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 170, 0);</string>
+      </property>
+      <property name="text">
+       <string>Supplier code</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QSpinBox" name="sp_code">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox, QSpinBox:hover {
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #dddddd;
+    background-color:rgba(0,0,0,0);
+}
+
+QSpinBox:editable{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #b2dfdb;
+    font-size: 20px;
+}
+
+QLineEdit:disabled{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+QSpinBox:focus{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+    color: #111111;
+}
+QSpinBox:pressed {
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+}
+</string>
+      </property>
+      <property name="buttonSymbols">
+       <enum>QAbstractSpinBox::PlusMinus</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QLineEdit" name="txt_first_mac">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit, QLineEdit:hover {
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #dddddd;
+    background-color:rgba(0,0,0,0);
+}
+
+QLineEdit:editable{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #b2dfdb;
+}
+
+QLineEdit:disabled{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+QLineEdit:focus{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+    color: #111111;
+}
+QLineEdit:pressed {
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+}
+</string>
+      </property>
+      <property name="inputMask">
+       <string>xx-xx-xx-xx-xx</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="lbl_last_mac">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 170, 0);</string>
+      </property>
+      <property name="text">
+       <string>Last MAC</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="lbl_first_mac">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 170, 0);</string>
+      </property>
+      <property name="text">
+       <string>First MAC</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Minimum</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>10</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="btn_save">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>180</y>
+     <width>91</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton, QPushButton:focus, QPushButton:focus {
+  border: none;
+  color: black;
+  padding: 3px 20px;
+	background-color: rgba(250, 250, 250, 250);
+}
+
+QPushButton:hover, QPushButton:hover:focus {
+  background-color: rgb(131, 186, 23);
+  border-color: #ffffff
+}
+
+QPushButton:pressed,
+QPushButton:pressed:focus {
+  background-color: #2196f3;
+  border: none;
+  color: white
+}
+
+QPushButton:disabled {
+background-color: rgb(131, 186, 23);
+    border: none
+}</string>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_cancel">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>180</y>
+     <width>81</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton, QPushButton:focus, QPushButton:focus {
+  border: none;
+  color: black;
+  padding: 3px 20px;
+	background-color: rgba(250, 250, 250, 250);
+}
+
+QPushButton:hover, QPushButton:hover:focus {
+  background-color: rgb(131, 186, 23);
+  border-color: #ffffff
+}
+
+QPushButton:pressed,
+QPushButton:pressed:focus {
+  background-color: #2196f3;
+  border: none;
+  color: white
+}
+
+QPushButton:disabled {
+background-color: rgb(131, 186, 23);
+    border: none
+}</string>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
