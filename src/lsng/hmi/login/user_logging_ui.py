@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\J_MARCHAL\eclipse-workspace\lsng\src\lsng\hmi\login\user_logging_ui.ui'
+# Form implementation generated from reading ui file 'C:\Users\Djer's PC\workspace\lsng\src\lsng\hmi\login\user_logging_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 

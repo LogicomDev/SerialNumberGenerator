@@ -79,9 +79,18 @@ class LogicomSerialGenerator(QMainWindow):
         self.log.add_trace("Please select a supplier and a model before starting", logging.WARNING)
         self.uic.lbl_pool_unsaved.setText("{} generations not saved".format(len(self.generations)))
         self.generation_infos_visibility(False)
+        self.hide_creation_button()
 
         self.connection()
         # self.showMaximized()
+
+    def hide_creation_button(self):
+        if self.user.level <= UserRight.Manager.value:
+            self.uic.btn_add_device.setHidden(False)
+            self.uic.btn_add_supplier.setHidden(False)
+        else:
+            self.uic.btn_add_device.setHidden(True)
+            self.uic.btn_add_supplier.setHidden(True)
 
     def connection(self):
         self.uic.btn_generate.clicked.connect(self.generation_start)
@@ -114,28 +123,45 @@ class LogicomSerialGenerator(QMainWindow):
                                                            self.user.last_name,
                                                            self.user.login,
                                                            UserRight(self.user.level).name)
-        )
+                                  )
         # This ensure the ID of current user is correct (at the cost of another SQL request)
         self.user.id = self.sql_db.get_user_id(self.user.login)[0]
 
     def add_supplier(self):
         supplier = AddSupplier(self)
-        if supplier.exec_() == QDialog.Accepted:
-            # self.db.add_supplier()
-            # self.sql_db.add_supplier(supplier, self.user)
-            print("Add supplier")
+        # supplier.setWindowFlags(Qt.CustomizeWindowHint)
+        if supplier.exec_() == QDialog.Accepted and supplier.name:
+            self.sql_db.add_supplier(supplier, self.user)
+            self.load_database()
             self.populate_treeview()
+            self.log.add_trace("Supplier succesfully added !", logging.INFO)
+        else:
+            self.log.add_trace("Supplier creation canceled")
 
     def add_device(self):
         '''
         Calls Remove windows
         '''
-        device = AddModel(self)
-        if device.exec_() == QDialog.Accepted:
-            # supplier.add_device()
-            # self.sql_db.add_device(device, self.user)
-            print("Add device")
+        item_name = self.uic.tree_devices.currentItem().text(0)
+        supplier = self.db.get_supplier(item_name)
+        if not supplier:
+            # We have selected a device
+            supplier_name = self.uic.tree_devices.currentItem().parent().text(0)
+            supplier = self.db.get_supplier(supplier_name)
+            self.log.add_trace("Please select a supplier first in order to add a device to the database", logging.WARNING)
+        else:
+            supplier_name = supplier.name
+        
+        # We have selected a supplier
+        device = AddModel(supplier_name)
+        device.setWindowFlags(Qt.CustomizeWindowHint)
+        if device.exec_() == QDialog.Accepted and device.name:
+            self.sql_db.add_device(device, supplier, self.user)
+            self.load_database()
             self.populate_treeview()
+            self.log.add_trace("Device succesfully added !", logging.INFO)
+        else:
+            self.log.add_trace("Device creation canceled")
 
     def edit_item(self):
         '''
@@ -147,6 +173,8 @@ class LogicomSerialGenerator(QMainWindow):
         '''
         Creates SQL tables (if not existing) and read them
         '''
+        self.sql = None
+
         self.sql_db.create_table()
 
         suppliers = self.sql_db.read_suppliers()
@@ -177,6 +205,7 @@ class LogicomSerialGenerator(QMainWindow):
             supplier_item = QTreeWidgetItem(self.uic.tree_devices, [supplier])
             for model in infos.devices:
                 QTreeWidgetItem(supplier_item, [model])
+        self.uic.tree_devices.sortItems(0, Qt.SortOrder(0))
 
     def generation_infos_visibility(self, state=True):
         self.uic.prg_generation.setHidden(not state)
@@ -240,7 +269,7 @@ class LogicomSerialGenerator(QMainWindow):
             if self.supplier.get_mac_address_left() == 0 or self.supplier.get_mac_address_left() > 200001:
                 self.log.add_trace("This supplier has no more MAC adresses available or a wrong MAC range. Please provide a new MAC range.", logging.CRITICAL)
 
-    def save_and_export(self):        
+    def save_and_export(self):
         for raw_generation in self.generations:
             generation = GenerationRunBasic(raw_generation.get("supplier"),
                                             raw_generation.get("device"),
@@ -250,7 +279,7 @@ class LogicomSerialGenerator(QMainWindow):
                                             raw_generation.get("prod_year") if len(str(raw_generation.get("prod_year"))) == 2 else str(raw_generation.get("prod_year"))[2:],
                                             raw_generation.get("qty"))
             generation.generated_values = raw_generation.get("values")
-            
+
             self.save_generation(generation)
             self.create_generation_reports(generation)
             self.load_database()
@@ -272,7 +301,7 @@ class LogicomSerialGenerator(QMainWindow):
         path = self.exporter.export_generation(generation)
         self.log.add_trace("Creation of generation report successful.")
         self.log.add_trace("File path is : {}".format(path))
-    
+
     def add_error_trace(self, msg):
         '''
         Something went wrong, so this method returns the program to a useable state

@@ -111,7 +111,7 @@ class Database(object):
         self.suppliers = {}
 
     def add_supplier(self, supplier_name, supplier_code, mac_min, mac_max, db_id=None):
-        if not self.suppliers.get(""):
+        if not self.suppliers.get(supplier_name):
             # Supplier not already created
             supplier = Supplier(supplier_name, supplier_code, mac_min, mac_max, db_id)
             self.suppliers[supplier_name] = supplier

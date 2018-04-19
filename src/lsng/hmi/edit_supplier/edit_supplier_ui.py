@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'edit_supplier.ui'
+# Form implementation generated from reading ui file 'C:\Users\Djer's PC\workspace\lsng\src\lsng\hmi\edit_supplier\edit_supplier_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,6 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_edit_supplier(object):
     def setupUi(self, edit_supplier):
         edit_supplier.setObjectName("edit_supplier")
+        edit_supplier.setWindowModality(QtCore.Qt.WindowModal)
         edit_supplier.resize(470, 210)
         edit_supplier.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         edit_supplier.setStyleSheet("background-color: rgb(255, 255, 255);")
@@ -27,7 +28,7 @@ class Ui_edit_supplier(object):
         self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 50, 461, 121))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setContentsMargins(6, 0, 6, 0)
         self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
         self.lbl_name = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -39,8 +40,10 @@ class Ui_edit_supplier(object):
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
         self.lbl_name.setFont(font)
-        self.lbl_name.setStyleSheet("color: rgb(85, 170, 0);")
+        self.lbl_name.setStyleSheet("color: rgb(176, 176, 176);")
         self.lbl_name.setObjectName("lbl_name")
         self.gridLayout.addWidget(self.lbl_name, 0, 0, 1, 1)
         self.txt_name = QtWidgets.QLineEdit(self.gridLayoutWidget)
@@ -109,14 +112,17 @@ class Ui_edit_supplier(object):
 "    border-bottom: 2px solid #00695c;\n"
 "}\n"
 "")
+        self.txt_last_mac.setInputMask("")
         self.txt_last_mac.setObjectName("txt_last_mac")
         self.gridLayout.addWidget(self.txt_last_mac, 3, 2, 1, 1)
         self.lbl_code = QtWidgets.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
         self.lbl_code.setFont(font)
-        self.lbl_code.setStyleSheet("color: rgb(85, 170, 0);")
+        self.lbl_code.setStyleSheet("color: rgb(176, 176, 176);")
         self.lbl_code.setObjectName("lbl_code")
         self.gridLayout.addWidget(self.lbl_code, 1, 0, 1, 1)
         self.sp_code = QtWidgets.QSpinBox(self.gridLayoutWidget)
@@ -158,6 +164,7 @@ class Ui_edit_supplier(object):
 "}\n"
 "")
         self.sp_code.setButtonSymbols(QtWidgets.QAbstractSpinBox.PlusMinus)
+        self.sp_code.setMinimum(1)
         self.sp_code.setObjectName("sp_code")
         self.gridLayout.addWidget(self.sp_code, 1, 2, 1, 1)
         self.txt_first_mac = QtWidgets.QLineEdit(self.gridLayoutWidget)
@@ -192,6 +199,7 @@ class Ui_edit_supplier(object):
 "    border-bottom: 2px solid #00695c;\n"
 "}\n"
 "")
+        self.txt_first_mac.setInputMask("")
         self.txt_first_mac.setObjectName("txt_first_mac")
         self.gridLayout.addWidget(self.txt_first_mac, 2, 2, 1, 1)
         self.lbl_last_mac = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -203,8 +211,10 @@ class Ui_edit_supplier(object):
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
         self.lbl_last_mac.setFont(font)
-        self.lbl_last_mac.setStyleSheet("color: rgb(85, 170, 0);")
+        self.lbl_last_mac.setStyleSheet("color: rgb(176, 176, 176);")
         self.lbl_last_mac.setObjectName("lbl_last_mac")
         self.gridLayout.addWidget(self.lbl_last_mac, 3, 0, 1, 1)
         self.lbl_first_mac = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -216,8 +226,10 @@ class Ui_edit_supplier(object):
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
         self.lbl_first_mac.setFont(font)
-        self.lbl_first_mac.setStyleSheet("color: rgb(85, 170, 0);")
+        self.lbl_first_mac.setStyleSheet("color: rgb(176, 176, 176);")
         self.lbl_first_mac.setObjectName("lbl_first_mac")
         self.gridLayout.addWidget(self.lbl_first_mac, 2, 0, 1, 1)
         spacerItem = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -287,15 +299,20 @@ class Ui_edit_supplier(object):
 
         self.retranslateUi(edit_supplier)
         QtCore.QMetaObject.connectSlotsByName(edit_supplier)
+        edit_supplier.setTabOrder(self.txt_name, self.sp_code)
+        edit_supplier.setTabOrder(self.sp_code, self.txt_first_mac)
+        edit_supplier.setTabOrder(self.txt_first_mac, self.txt_last_mac)
+        edit_supplier.setTabOrder(self.txt_last_mac, self.btn_save)
+        edit_supplier.setTabOrder(self.btn_save, self.btn_cancel)
 
     def retranslateUi(self, edit_supplier):
         _translate = QtCore.QCoreApplication.translate
         edit_supplier.setWindowTitle(_translate("edit_supplier", "Create Supplier"))
         self.lbl_title.setText(_translate("edit_supplier", "Supplier Creation"))
         self.lbl_name.setText(_translate("edit_supplier", "Supplier Name"))
-        self.txt_last_mac.setInputMask(_translate("edit_supplier", "xx-xx-xx-xx-xx"))
+        self.txt_last_mac.setPlaceholderText(_translate("edit_supplier", "AA-BB-CC-DD-EE"))
         self.lbl_code.setText(_translate("edit_supplier", "Supplier code"))
-        self.txt_first_mac.setInputMask(_translate("edit_supplier", "xx-xx-xx-xx-xx"))
+        self.txt_first_mac.setPlaceholderText(_translate("edit_supplier", "AA-BB-CC-DD-EE"))
         self.lbl_last_mac.setText(_translate("edit_supplier", "Last MAC"))
         self.lbl_first_mac.setText(_translate("edit_supplier", "First MAC"))
         self.btn_save.setText(_translate("edit_supplier", "Save"))

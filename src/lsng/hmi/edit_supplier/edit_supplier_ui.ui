@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>edit_supplier</class>
  <widget class="QDialog" name="edit_supplier">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -54,6 +57,12 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>6</number>
+    </property>
+    <property name="rightMargin">
+     <number>6</number>
+    </property>
     <property name="spacing">
      <number>0</number>
     </property>
@@ -69,10 +78,12 @@
        <font>
         <family>Roboto</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(85, 170, 0);</string>
+       <string notr="true">color: rgb(176, 176, 176);</string>
       </property>
       <property name="text">
        <string>Supplier Name</string>
@@ -152,7 +163,10 @@ QLineEdit:pressed {
 </string>
       </property>
       <property name="inputMask">
-       <string>xx-xx-xx-xx-xx</string>
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>AA-BB-CC-DD-EE</string>
       </property>
      </widget>
     </item>
@@ -162,10 +176,12 @@ QLineEdit:pressed {
        <font>
         <family>Roboto</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(85, 170, 0);</string>
+       <string notr="true">color: rgb(176, 176, 176);</string>
       </property>
       <property name="text">
        <string>Supplier code</string>
@@ -223,6 +239,9 @@ QSpinBox:pressed {
       <property name="buttonSymbols">
        <enum>QAbstractSpinBox::PlusMinus</enum>
       </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
      </widget>
     </item>
     <item row="2" column="2">
@@ -261,7 +280,10 @@ QLineEdit:pressed {
 </string>
       </property>
       <property name="inputMask">
-       <string>xx-xx-xx-xx-xx</string>
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>AA-BB-CC-DD-EE</string>
       </property>
      </widget>
     </item>
@@ -277,10 +299,12 @@ QLineEdit:pressed {
        <font>
         <family>Roboto</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(85, 170, 0);</string>
+       <string notr="true">color: rgb(176, 176, 176);</string>
       </property>
       <property name="text">
        <string>Last MAC</string>
@@ -299,10 +323,12 @@ QLineEdit:pressed {
        <font>
         <family>Roboto</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(85, 170, 0);</string>
+       <string notr="true">color: rgb(176, 176, 176);</string>
       </property>
       <property name="text">
        <string>First MAC</string>
@@ -422,6 +448,14 @@ background-color: rgb(131, 186, 23);
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>txt_name</tabstop>
+  <tabstop>sp_code</tabstop>
+  <tabstop>txt_first_mac</tabstop>
+  <tabstop>txt_last_mac</tabstop>
+  <tabstop>btn_save</tabstop>
+  <tabstop>btn_cancel</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

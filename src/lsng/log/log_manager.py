@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import (QTableWidgetItem, QMessageBox)
 from PyQt5.QtGui import (QPixmap, QColor, QIcon)
 from PyQt5.QtCore import (Qt)
 
-RESSOURCE_PATH = r"../../res" #TODO: fix the path once the launcher is fixed
+RESSOURCE_PATH = r"res" #TODO: fix the path once the launcher is fixed
 
 class LogManager(object):
     '''

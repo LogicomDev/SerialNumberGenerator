@@ -15,7 +15,7 @@ def singleton(cls):
     return ctor
 
 def untextify_mac(mac_address):
-    return int(mac_address.replace("-", ""), 16)
+    return int(mac_address.replace(":", "").replace("-", ""), 16)
 
 def i2mac(value):
     '''

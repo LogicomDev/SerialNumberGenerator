@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'edit_model.ui'
+# Form implementation generated from reading ui file 'C:\Users\Djer's PC\workspace\lsng\src\lsng\hmi\edit_model\edit_model_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -71,6 +71,7 @@ class Ui_edit_model(object):
 "}\n"
 "")
         self.sp_code.setButtonSymbols(QtWidgets.QAbstractSpinBox.PlusMinus)
+        self.sp_code.setMinimum(1)
         self.sp_code.setObjectName("sp_code")
         self.gridLayout.addWidget(self.sp_code, 3, 1, 1, 1)
         self.lbl_code = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -81,14 +82,14 @@ class Ui_edit_model(object):
         self.lbl_code.setStyleSheet("color: rgb(85, 170, 0);")
         self.lbl_code.setObjectName("lbl_code")
         self.gridLayout.addWidget(self.lbl_code, 3, 0, 1, 1)
-        self.label_2 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.lbl_supplier = QtWidgets.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setPointSize(10)
-        self.label_2.setFont(font)
-        self.label_2.setStyleSheet("")
-        self.label_2.setObjectName("label_2")
-        self.gridLayout.addWidget(self.label_2, 0, 1, 1, 1)
+        self.lbl_supplier.setFont(font)
+        self.lbl_supplier.setStyleSheet("")
+        self.lbl_supplier.setObjectName("lbl_supplier")
+        self.gridLayout.addWidget(self.lbl_supplier, 0, 1, 1, 1)
         self.lbl_first_mac = QtWidgets.QLabel(self.gridLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -265,6 +266,8 @@ class Ui_edit_model(object):
 "}\n"
 "")
         self.sp_tac_code.setButtonSymbols(QtWidgets.QAbstractSpinBox.PlusMinus)
+        self.sp_tac_code.setMinimum(0)
+        self.sp_tac_code.setMaximum(99999999)
         self.sp_tac_code.setObjectName("sp_tac_code")
         self.gridLayout.addWidget(self.sp_tac_code, 5, 1, 1, 1)
         self.lbl_last_mac = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -381,6 +384,14 @@ class Ui_edit_model(object):
         self.retranslateUi(edit_model)
         self.cb_type.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(edit_model)
+        edit_model.setTabOrder(self.txt_name, self.sp_code)
+        edit_model.setTabOrder(self.sp_code, self.sp_sim)
+        edit_model.setTabOrder(self.sp_sim, self.sp_tac_code)
+        edit_model.setTabOrder(self.sp_tac_code, self.cb_wifi)
+        edit_model.setTabOrder(self.cb_wifi, self.cb_bt)
+        edit_model.setTabOrder(self.cb_bt, self.cb_type)
+        edit_model.setTabOrder(self.cb_type, self.btn_save)
+        edit_model.setTabOrder(self.btn_save, self.btn_cancel)
 
     def retranslateUi(self, edit_model):
         _translate = QtCore.QCoreApplication.translate
@@ -389,9 +400,10 @@ class Ui_edit_model(object):
         self.label_3.setText(_translate("edit_model", "Supplier"))
         self.sp_code.setToolTip(_translate("edit_model", "Model\'s code"))
         self.lbl_code.setText(_translate("edit_model", "Model code"))
-        self.label_2.setText(_translate("edit_model", "TextLabel"))
+        self.lbl_supplier.setText(_translate("edit_model", "TextLabel"))
         self.lbl_first_mac.setText(_translate("edit_model", "SIM Number"))
         self.lbl_name.setText(_translate("edit_model", "Model Name"))
+        self.txt_name.setPlaceholderText(_translate("edit_model", "Enter the name of Model here"))
         self.cb_type.setItemText(0, _translate("edit_model", "FEATURE PHONE"))
         self.cb_type.setItemText(1, _translate("edit_model", "SMARTPHONE"))
         self.cb_type.setItemText(2, _translate("edit_model", "TABLET"))

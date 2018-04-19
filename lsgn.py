@@ -58,7 +58,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     # Problematic
-    db_handler = SQLHandler(os.path.join(os.getcwd(), "database","logicom_database.db"))
+    db_handler = SQLHandler(os.path.join(os.getcwd(), "src", "lsng", "database","logicom_database.db"))
 
     # for debug only
     from database.models import User

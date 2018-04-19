@@ -114,6 +114,9 @@ QSpinBox:pressed {
       <property name="buttonSymbols">
        <enum>QAbstractSpinBox::PlusMinus</enum>
       </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
      </widget>
     </item>
     <item row="3" column="0">
@@ -133,7 +136,7 @@ QSpinBox:pressed {
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="lbl_supplier">
       <property name="font">
        <font>
         <family>Roboto</family>
@@ -232,6 +235,9 @@ QLineEdit:pressed {
     border-bottom: 2px solid #00695c;
 }
 </string>
+      </property>
+      <property name="placeholderText">
+       <string>Enter the name of Model here</string>
       </property>
      </widget>
     </item>
@@ -413,6 +419,12 @@ QSpinBox:pressed {
       </property>
       <property name="buttonSymbols">
        <enum>QAbstractSpinBox::PlusMinus</enum>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>99999999</number>
       </property>
      </widget>
     </item>
@@ -615,6 +627,17 @@ background-color: rgb(131, 186, 23);
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>txt_name</tabstop>
+  <tabstop>sp_code</tabstop>
+  <tabstop>sp_sim</tabstop>
+  <tabstop>sp_tac_code</tabstop>
+  <tabstop>cb_wifi</tabstop>
+  <tabstop>cb_bt</tabstop>
+  <tabstop>cb_type</tabstop>
+  <tabstop>btn_save</tabstop>
+  <tabstop>btn_cancel</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
