@@ -9,7 +9,7 @@ from netaddr import EUI, AddrFormatError
 from luhn import append as luhn_append
 
 # Local imports
-from helpers import singleton, to_bool, i2mac, untextify_mac
+from src.lsng.helpers import singleton, to_bool, i2mac, untextify_mac
 from enum import Enum
 
 

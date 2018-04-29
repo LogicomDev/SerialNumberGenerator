@@ -3,11 +3,10 @@ Created on 10 avr. 2018
 
 @author: Djer
 '''
-
-from PyQt5.QtWidgets import QDialog, QMessageBox
-from hmi.edit_supplier.edit_supplier_ui import Ui_edit_supplier
-
 import re
+from PyQt5.QtWidgets import QDialog, QMessageBox
+
+from src.lsng.hmi.edit_supplier.edit_supplier_ui import Ui_edit_supplier
 
 class AddSupplier(QDialog):
     '''

@@ -1,5 +1,5 @@
 
-from export.csv.csv_export import CSVHandler
+from src.lsng.export.csv.csv_export import CSVHandler
 
 
 class Exporter(object):

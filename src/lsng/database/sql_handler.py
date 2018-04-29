@@ -6,8 +6,8 @@ import time
 import os
 
 # Local imports
-from helpers import singleton, untextify_mac
-from database.models import User, Database, GenerationData, GenerationRunBasic
+from src.lsng.helpers import singleton, untextify_mac
+from src.lsng.database.models import User, Database, GenerationData, GenerationRunBasic
 
 DATABASE_NAME = "logicom_database.db"
 

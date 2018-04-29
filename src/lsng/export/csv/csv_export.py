@@ -4,7 +4,7 @@ Created on 5 avr. 2018
 @author: Djer
 '''
 import os
-from helpers import textify_mac_from_int
+from src.lsng.helpers import textify_mac_from_int
 from PyQt5.QtCore import (pyqtSignal)
 
 class CSVHandler(object):
@@ -16,7 +16,7 @@ class CSVHandler(object):
         '''
         Constructor
         '''
-        self.basefolder = os.path.join(parent.basefolder,  "..",  "..", "Traceability")
+        self.basefolder = os.path.join(parent.basefolder,  "Traceability")
         self.event_trace = pyqtSignal(str)
 
     def export_generation(self, generation_obj):

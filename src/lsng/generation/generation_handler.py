@@ -5,8 +5,10 @@ Created on 5 avr. 2018
 '''
 
 from PyQt5.QtCore import (QThread, pyqtSignal)
-from database.models import GenerationData
+
 from luhn import append as luhn_append
+
+from src.lsng.database.models import GenerationData
 
 
 class NoMoreMACAdressAvailable(Exception):

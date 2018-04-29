@@ -6,8 +6,8 @@ Created on 6 avr. 2018
 
 from PyQt5.QtWidgets import QMessageBox, QDialog
 
-from hmi.login import user_logging_ui as user_logging
-from database.models import User
+from src.lsng.hmi.login import user_logging_ui as user_logging
+from src.lsng.database.models import User
 
 
 class Login(QDialog):

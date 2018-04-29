@@ -17,15 +17,15 @@ from enum import Enum
 import os
 
 # Windows imports
-from hmi.main_window import main_windows_ui as main_ui
-from hmi.edit_model_hmi import AddModel
-from hmi.edit_supplier_hmi import AddSupplier
+from src.lsng.hmi.main_window import main_windows_ui as main_ui
+from src.lsng.hmi.edit_model_hmi import AddModel
+from src.lsng.hmi.edit_supplier_hmi import AddSupplier
 
 # File imports
-from database.models import Database, GenerationRunBasic
-from log.log_manager import LogManager
-from export.export import Exporter
-from generation.generation_handler import GenerationHandler
+from src.lsng.database.models import Database, GenerationRunBasic
+from src.lsng.log.log_manager import LogManager
+from src.lsng.export.export import Exporter
+from src.lsng.generation.generation_handler import GenerationHandler
 
 __version__ = "3.0b"
 

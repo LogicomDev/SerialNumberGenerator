@@ -7,9 +7,10 @@ from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.QtCore import QObject, pyqtSignal
 
 # Windows imports
-from hmi.lsgn_hmi import LogicomSerialGenerator
-from hmi.login_hmi import Login
-from database.sql_handler import SQLHandler
+from src.lsng.hmi.lsgn_hmi import LogicomSerialGenerator
+from src.lsng.hmi.login_hmi import Login
+from src.lsng.database.sql_handler import SQLHandler
+
 
 class StdErrHandler(QObject):
     '''
@@ -55,28 +56,29 @@ class StdErrHandler(QObject):
 #         return self.movie.scaledSize()
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = QApplication(sys.argv)    
 
     # Problematic
-    db_handler = SQLHandler(os.path.join(os.getcwd(), "src", "lsng", "database","logicom_database.db"))
+    db_handler = SQLHandler(os.path.join(os.getcwd(), "logicom_database.db"))
 
     # for debug only
-    from database.models import User
+    from src.lsng.database.models import User
     frame = LogicomSerialGenerator(db_handler, User(0, "Jeremy", "Marchal", "Admin", 0))  # For debug only
     frame.show()
     # Fin debug
-    
+
 #     login = Login(db_handler)
 #     if login.exec_() == QDialog.Accepted:
 #         frame = LogicomSerialGenerator(db_handler, login.user)
 #         frame.show()
-#          
+#
 #     # Create the stderr handler and point stderr to it
 #     std_err_handler = StdErrHandler()
 #     sys.stderr = std_err_handler
-#      
+#
 #     # Connect err_msg signal to message box method in main window
 #     std_err_handler.err_msg.connect(frame.std_err_post)
+
     try:
         sys.exit(app.exec_())
     except Exception as ex:

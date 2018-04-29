@@ -5,8 +5,9 @@ Created on 10 avr. 2018
 '''
 
 from PyQt5.QtWidgets import QDialog, QMessageBox
-from hmi.edit_model.edit_model_ui import Ui_edit_model
-from database.models import DeviceType
+
+from src.lsng.hmi.edit_model.edit_model_ui import Ui_edit_model
+from src.lsng.database.models import DeviceType
 
 
 class AddModel(QDialog):
