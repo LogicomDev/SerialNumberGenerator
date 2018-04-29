@@ -34,6 +34,7 @@ class UserRight(Enum):
     Admin = 0
     Manager = 1
     Tester = 2
+    Quality = 3
 
 
 class NoMoreMACAdressAvailable(Exception):

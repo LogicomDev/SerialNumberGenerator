@@ -51,9 +51,10 @@ class SQLHandler(object):
         if not os.path.exists(self.logfile):
             with open(self.logfile, "w") as fic:
                 fic.write("")
-            
-        with open(self.logfile, "a") as fic:
-            fic.write(cmd.replace("\t","").replace("\n","") + "\n")
+        # Do not write the SELECT request or otherwise it'll clog the file quickly
+        if not "SELECT" in cmd:
+            with open(self.logfile, "a") as fic:
+                fic.write(cmd.replace("\t","").replace("\n","") + "\n")
         self.cursor.execute(cmd)
         self.database.commit()
 

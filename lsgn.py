@@ -62,22 +62,22 @@ if __name__ == '__main__':
     db_handler = SQLHandler(os.path.join(os.getcwd(), "logicom_database.db"))
 
     # for debug only
-    from src.lsng.database.models import User
-    frame = LogicomSerialGenerator(db_handler, User(0, "Jeremy", "Marchal", "Admin", 0))  # For debug only
-    frame.show()
+    # from src.lsng.database.models import User
+    # frame = LogicomSerialGenerator(db_handler, User(0, "Jeremy", "Marchal", "Admin", 0))  # For debug only
+    # frame.show()
     # Fin debug
 
-#     login = Login(db_handler)
-#     if login.exec_() == QDialog.Accepted:
-#         frame = LogicomSerialGenerator(db_handler, login.user)
-#         frame.show()
-#
-#     # Create the stderr handler and point stderr to it
-#     std_err_handler = StdErrHandler()
-#     sys.stderr = std_err_handler
-#
-#     # Connect err_msg signal to message box method in main window
-#     std_err_handler.err_msg.connect(frame.std_err_post)
+    login = Login(db_handler)
+    if login.exec_() == QDialog.Accepted:
+        frame = LogicomSerialGenerator(db_handler, login.user)
+        frame.show()
+
+    # # Create the stderr handler and point stderr to it
+    # std_err_handler = StdErrHandler()
+    # sys.stderr = std_err_handler
+
+    # # Connect err_msg signal to message box method in main window
+    # std_err_handler.err_msg.connect(frame.std_err_post)
 
     try:
         sys.exit(app.exec_())
