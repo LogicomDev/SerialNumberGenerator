@@ -3,7 +3,7 @@
 import sys
 
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QTreeWidgetItem, QShortcut, QDialog)
-from PyQt5.QtGui import QKeySequence
+from PyQt5.QtGui import QKeySequence, QValidator
 from PyQt5.QtCore import pyqtSlot, Qt
 # from PyQt5.QtWidgets import (QMainWindow, QApplication, QFileDialog,
 #                              QTreeWidgetItem, QInputDialog, QMessageBox, QDialog,
@@ -11,7 +11,7 @@ from PyQt5.QtCore import pyqtSlot, Qt
 #                              QSplashScreen, QShortcut)
 # from PyQt5.QtGui import QMovie, QPixmap, QPainter, QKeySequence
 # from PyQt5.QtCore import QObject, pyqtSignal, QFile, QFileInfo, QSettings, Qt, QTextStream, pyqtSlot
-
+    
 import logging
 from enum import Enum
 import os
@@ -25,9 +25,9 @@ from src.lsng.hmi.edit_supplier_hmi import AddSupplier
 from src.lsng.database.models import Database, GenerationRunBasic
 from src.lsng.log.log_manager import LogManager
 from src.lsng.export.export import Exporter
-from src.lsng.generation.generation_handler import GenerationHandler
+from src.lsng.generation.generation_handler import GenerationHandler, NoMoreMACAdressAvailable, NoMoreIMEIAdressAvailable, NoMoreSerialAvailable
 
-__version__ = "3.0b"
+__version__ = "3.3"
 
 
 class UserRight(Enum):
@@ -35,14 +35,15 @@ class UserRight(Enum):
     Manager = 1
     Tester = 2
     Quality = 3
+    
 
+class UppercaseValidator(QValidator):
+    """
+    This is a Validator designed to handle the color input and make sure it's always uppercase
+    """
 
-class NoMoreMACAdressAvailable(Exception):
-    pass
-
-
-class NoMoreIMEIAdressAvailable(Exception):
-    pass
+    def validate(self, string, pos):
+        return QValidator.Acceptable, string.upper(), pos
 
 
 class LogicomSerialGenerator(QMainWindow):
@@ -57,7 +58,8 @@ class LogicomSerialGenerator(QMainWindow):
 
         # Basic objects attributes
         self.basefolder = os.getcwd()
-        self.generations = []
+#         self.generations = []
+        self.let_user_generate = True
 
         # Complex attributes
         self.current_generation = None
@@ -78,11 +80,14 @@ class LogicomSerialGenerator(QMainWindow):
         self.setWindowTitle("Logicom Serial Generator - v." + __version__)
         self.log.add_trace("Welcome to the LOGICOM Serial Generator Tool")
         self.log.add_trace("Please select a supplier and a model before starting", logging.WARNING)
-        self.uic.lbl_pool_unsaved.setText("{} generations not saved".format(len(self.generations)))
+        self.uic.lbl_pool_unsaved.setText("Waiting for a generation ... :(")
         self.generation_infos_visibility(False)
         self.hide_creation_button()
 
         self.connection()
+        
+        self.uppercase_validator = UppercaseValidator(self)
+        self.uic.txt_color.setValidator(self.uppercase_validator)
         # self.showMaximized()
 
     def hide_creation_button(self):
@@ -106,12 +111,12 @@ class LogicomSerialGenerator(QMainWindow):
         self.generator.session_progression.connect(self.update_progbar)
         self.generator.event_errors.connect(self.add_error_trace)
 
-        self.uic.tree_devices.itemSelectionChanged.connect(self.release_generation_button)
-        self.uic.txt_po_number.textChanged.connect(self.release_generation_button)
-        self.uic.txt_color.textChanged.connect(self.release_generation_button)
-        self.uic.sp_week.valueChanged.connect(self.release_generation_button)
-        self.uic.sp_year.valueChanged.connect(self.release_generation_button)
-        self.uic.sp_qty.valueChanged.connect(self.release_generation_button)
+#         self.uic.tree_devices.itemSelectionChanged.connect(self.release_generation_button)
+#         self.uic.txt_po_number.textChanged.connect(self.release_generation_button)
+#         self.uic.txt_color.textChanged.connect(self.release_generation_button)
+#         self.uic.sp_week.valueChanged.connect(self.release_generation_button)
+#         self.uic.sp_year.valueChanged.connect(self.release_generation_button)
+#         self.uic.sp_qty.valueChanged.connect(self.release_generation_button)
 
         # Shortcuts connection
         QShortcut(QKeySequence("Ctrl+q"), self, self.close)
@@ -120,11 +125,12 @@ class LogicomSerialGenerator(QMainWindow):
         '''
         Displays a nice "f_name l_name (login) - (level)" prompt at the top of screen
         '''
-        self.uic.txt_user.setText("{} {} ({}) - {}".format(self.user.first_name,
-                                                           self.user.last_name,
-                                                           self.user.login,
-                                                           UserRight(self.user.level).name)
-                                  )
+        self.uic.txt_user.setText("{} {} ({}) - {}".format(
+            self.user.first_name,
+            self.user.last_name,
+            self.user.login,
+            UserRight(self.user.level).name)
+        )
         # This ensure the ID of current user is correct (at the cost of another SQL request)
         self.user.id = self.sql_db.get_user_id(self.user.login)[0]
 
@@ -135,7 +141,7 @@ class LogicomSerialGenerator(QMainWindow):
             self.sql_db.add_supplier(supplier, self.user)
             self.load_database()
             self.populate_treeview()
-            self.log.add_trace("Supplier succesfully added !", logging.INFO)
+            self.log.add_trace("Supplier successfully added !", logging.INFO)
         else:
             self.log.add_trace("Supplier creation canceled")
 
@@ -143,13 +149,18 @@ class LogicomSerialGenerator(QMainWindow):
         '''
         Calls Remove windows
         '''
-        item_name = self.uic.tree_devices.currentItem().text(0)
-        supplier = self.db.get_supplier(item_name)
+        item_name = self.uic.tree_devices.currentItem()
+        
+        if not item_name:
+            self.log.add_trace("Please select a supplier first in order to add a device to the database", logging.WARNING)
+            return
+        supplier = self.db.get_supplier(item_name.text(0))
         if not supplier:
             # We have selected a device
             supplier_name = self.uic.tree_devices.currentItem().parent().text(0)
             supplier = self.db.get_supplier(supplier_name)
             self.log.add_trace("Please select a supplier first in order to add a device to the database", logging.WARNING)
+            return
         else:
             supplier_name = supplier.name
         
@@ -160,7 +171,7 @@ class LogicomSerialGenerator(QMainWindow):
             self.sql_db.add_device(device, supplier, self.user)
             self.load_database()
             self.populate_treeview()
-            self.log.add_trace("Device succesfully added !", logging.INFO)
+            self.log.add_trace("Device successfully added !", logging.INFO)
         else:
             self.log.add_trace("Device creation canceled")
 
@@ -175,8 +186,6 @@ class LogicomSerialGenerator(QMainWindow):
         Creates SQL tables (if not existing) and read them
         '''
         self.sql = None
-
-        self.sql_db.create_table()
 
         suppliers = self.sql_db.read_suppliers()
         for supplier in suppliers:
@@ -209,45 +218,62 @@ class LogicomSerialGenerator(QMainWindow):
         self.uic.tree_devices.sortItems(0, Qt.SortOrder(0))
 
     def generation_infos_visibility(self, state=True):
-        self.uic.prg_generation.setHidden(not state)
+#         self.uic.prg_generation.setHidden(not state)
         self.uic.lbl_info_pool_unsaved.setHidden(not state)
         self.uic.lbl_pool_unsaved.setHidden(not state)
         self.uic.btn_save.setHidden(not state)
+        self.let_user_generate = not state
 
+    def set_generation_info_enabled(self, state):
+        self.uic.sp_mac_left.setEnabled(state)
+        self.uic.sp_imei_left.setEnabled(state)
+        self.uic.tree_devices.setEnabled(state)
+        self.uic.txt_po_number.setEnabled(state)
+        self.uic.txt_color.setEnabled(state)
+        self.uic.sp_week.setEnabled(state)
+        self.uic.sp_year.setEnabled(state)
+        self.uic.sp_qty.setEnabled(state)
+        self.uic.btn_add_device.setEnabled(state)
+        self.uic.btn_add_supplier.setEnabled(state)  
+    
     def release_generation_button(self):
         self.uic.btn_generate.setEnabled(True)
 
     def generation_start(self):
-        if self.uic.txt_po_number.text() and self.uic.txt_color.text() and self.uic.sp_qty.value() and self.device:
-            self.uic.btn_generate.setEnabled(False)
-            self.generation_infos_visibility(True)
-            self.uic.prg_generation.setMinimum(0)
-            self.uic.prg_generation.setMaximum(self.uic.sp_qty.value())
-            self.uic.prg_generation.setValue(0)
-            self.log.add_trace("Generation started", logging.INFO)
-            QApplication.setOverrideCursor(Qt.WaitCursor)
+        # if self.uic.txt_po_number.text() and self.uic.txt_color.text() and self.uic.sp_qty.value() and self.device:
+        if self.let_user_generate:
             # Start subsidiary Thread
             try:
                 self.generator.load_values(self.supplier, self.device, self.uic.txt_po_number.text(),
                                            self.uic.txt_color.text(), self.uic.sp_week.value(),
                                            self.uic.sp_year.value(), self.uic.sp_qty.value())
+                
+                self.uic.btn_generate.setEnabled(False)
+                self.generation_infos_visibility(True)
+                self.set_generation_info_enabled(False)
+                self.uic.prg_generation.setMinimum(0)
+                self.uic.prg_generation.setMaximum(self.uic.sp_qty.value())
+                self.uic.prg_generation.setValue(0)
+                self.log.add_trace("Generation started", logging.INFO)
+                QApplication.setOverrideCursor(Qt.WaitCursor)
+            
                 self.generator.start()
             except NoMoreMACAdressAvailable:
-                self.log.add_trace("No more MAC adress available : Please update MAC datas and MAC attribution table", logging.CRITICAL)
+                QApplication.restoreOverrideCursor()
+                self.log.add_trace("No more MAC address available : Please update MAC attribution table", logging.CRITICAL)
             except NoMoreIMEIAdressAvailable:
-                self.log.add_trace("No more IMEI adress available : Please get a new IMEI for your device", logging.CRITICAL)
+                QApplication.restoreOverrideCursor()
+                self.log.add_trace("No more IMEI address available : Please get a new TAC code for your device", logging.CRITICAL)
             except Exception as ex:
                 # Catch all other stuff !
-                self.log.add_trace(ex, logging.CRITICAL)
+                self.log.add_trace(str(ex), logging.CRITICAL)
         else:
             self.log.add_trace("Please make sure to fill every field before running a generation ;)", logging.ERROR)
 
     def generation_finished(self):
         QApplication.restoreOverrideCursor()
-        # saves the results
-        self.generations.append(self.generator.get_results())
-
-        self.uic.lbl_pool_unsaved.setText("{} generations not saved".format(len(self.generations)))
+                
+        self.uic.lbl_pool_unsaved.setText("Please save your generation")
         self.log.add_trace_with_box("Generation have successfully ended ! :)")
 
     @pyqtSlot(int)
@@ -267,39 +293,46 @@ class LogicomSerialGenerator(QMainWindow):
             self.uic.txt_model.setText("{:02}".format(self.device.code))
             self.uic.sp_mac_left.setValue(self.supplier.get_mac_address_left())
             self.uic.sp_imei_left.setValue(self.device.get_imei_left())
-            if self.supplier.get_mac_address_left() == 0 or self.supplier.get_mac_address_left() > 200001:
+            if self.supplier.get_mac_address_left() == 0 or self.supplier.get_mac_address_left() > 223696:
                 self.log.add_trace("This supplier has no more MAC adresses available or a wrong MAC range. Please provide a new MAC range.", logging.CRITICAL)
 
     def save_and_export(self):
-        for raw_generation in self.generations:
-            generation = GenerationRunBasic(raw_generation.get("supplier"),
-                                            raw_generation.get("device"),
-                                            raw_generation.get("po_number"),
-                                            raw_generation.get("color"),
-                                            raw_generation.get("prod_week"),
-                                            raw_generation.get("prod_year") if len(str(raw_generation.get("prod_year"))) == 2 else str(raw_generation.get("prod_year"))[2:],
-                                            raw_generation.get("qty"))
-            generation.generated_values = raw_generation.get("values")
+        # for raw_generation in self.generations:
+        raw_generation = self.generator.get_results()
+        generation = GenerationRunBasic(raw_generation.get("supplier"),
+                                        raw_generation.get("device"),
+                                        raw_generation.get("po_number"),
+                                        raw_generation.get("color"),
+                                        raw_generation.get("prod_week"),
+                                        raw_generation.get("prod_year") if len(str(raw_generation.get("prod_year"))) == 2 else str(raw_generation.get("prod_year"))[2:],
+                                        raw_generation.get("qty"))
+        generation.generated_values = raw_generation.get("values")
 
-            self.save_generation(generation)
-            self.create_generation_reports(generation)
-            self.load_database()
+        self.save_generation(generation)
+        self.create_generation_reports(generation)
 
         # Clears the generation buffer
-        self.generations = []
         self.generation_infos_visibility(False)
+        self.set_generation_info_enabled(True)
+        self.load_database()
 
     def save_generation(self, generation):
         '''
         Save the generation results to the SQL database
         '''
         self.log.add_trace("Saving generation for {}-{}-{}".format(generation.po_number, generation.color, generation.qty))
+        print("&&&")
         self.sql_db.add_generation(generation, self.user)
         self.log.add_trace("Saving successful")
+        print("---")
 
     def create_generation_reports(self, generation):
+        if self.uic.chk_seperator.isChecked():
+            mac_seperator = "-"
+        else:
+            mac_seperator = ":"
         self.log.add_trace("Creating CSV generation report for {}-{}-{}".format(generation.po_number, generation.color, generation.qty))
-        path = self.exporter.export_generation(generation)
+        path = self.exporter.export_generation(generation, mac_seperator)
         self.log.add_trace("Creation of generation report successful.")
         self.log.add_trace("File path is : {}".format(path))
 

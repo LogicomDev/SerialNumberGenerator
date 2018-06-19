@@ -4,7 +4,7 @@ Created on 5 avr. 2018
 @author: Djer
 '''
 import os
-from src.lsng.helpers import textify_mac_from_int
+from src.lsng.helpers import i2mac
 from PyQt5.QtCore import (pyqtSignal)
 
 class CSVHandler(object):
@@ -19,24 +19,29 @@ class CSVHandler(object):
         self.basefolder = os.path.join(parent.basefolder,  "Traceability")
         self.event_trace = pyqtSignal(str)
 
-    def export_generation(self, generation_obj):
+    def export_generation(self, generation_obj, seperator):
         str_generation = []
         if not os.path.isdir(self.basefolder):
             os.mkdir(self.basefolder)
             
-        self.basefolder = os.path.join(self.basefolder, "PO{}".format(generation_obj.po_number))
-        if not os.path.isdir(self.basefolder):
-            os.mkdir(self.basefolder)
+        currentfolder = os.path.join(self.basefolder, "PO{}".format(generation_obj.po_number))
+        if not os.path.isdir(currentfolder):
+            os.mkdir(currentfolder)
 
-        filename = os.path.join(self.basefolder, "PO{}_{}_{}_{}_{}.csv".format(generation_obj.po_number, generation_obj.supplier.name,
+        filename = os.path.join(currentfolder, "PO{}_{}_{}_{}_{}.csv".format(generation_obj.po_number, generation_obj.supplier.name,
                                                                                generation_obj.device.name, generation_obj.color,
                                                                                generation_obj.qty))
+        if os.path.isfile(filename):
+            # What to do when the file already exists ?
+            print("filename already exists. Updating name.")
+            filename = filename.replace(".csv", "_2.csv")
+            
         for generated_sn in generation_obj.generated_values:
             str_generation.append("{}; {}; {}; {}; {}".format(generated_sn.serial,
                                                               generated_sn.imei_1, # Here, IMEIs needs to be full (TAC + serial + luhn checksum)
                                                               generated_sn.imei_2,
-                                                              textify_mac_from_int(generated_sn.wifi).upper(), # Here, MAC adress needs to be written with dashes
-                                                              textify_mac_from_int(generated_sn.bt).upper()
+                                                              i2mac(generated_sn.wifi, seperator).upper(), # Here, MAC adress needs to be written with dashes
+                                                              i2mac(generated_sn.bt, seperator).upper()
                                                               )
                                   )
 
@@ -50,4 +55,5 @@ class CSVHandler(object):
             fic.write("\n".join(str_generation))
             fic.write("\n")
             fic.write("---;END;OF THE;LIST;---")
+            
         return os.path.normpath(filename)

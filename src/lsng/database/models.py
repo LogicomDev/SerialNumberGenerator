@@ -156,7 +156,7 @@ class Supplier(object):
         self.name = name
         self.code = code
         self.mac_min = untextify_mac(mac_min) if mac_min else 0
-        self.mac_max = untextify_mac(mac_max) if mac_max else 1
+        self.mac_max = untextify_mac(mac_max) if mac_max else 200000
         self.mac_last = self.mac_min
         self.id = db_id
         self.devices = {}
@@ -193,23 +193,26 @@ class Supplier(object):
 
     def add_generation(self, data_tuple):
         mac_last = self.mac_min
-        if data_tuple[15]:
-            mac_last = data_tuple[15]
-        elif data_tuple[13]:
-            mac_last = data_tuple[13]
+        if data_tuple[15] and str(data_tuple[15]).isdigit():
+            mac_last = int(data_tuple[15])
+        elif data_tuple[13] and str(data_tuple[13]).isdigit():
+            mac_last = int(data_tuple[13])
         else:
             mac_last = 0
 
         if self.mac_min <= mac_last <= self.mac_max and mac_last > self.mac_last:
             self.mac_last = mac_last
-        #print("{}: {} - {}".format(self.name, i2mac(self.mac_last), self.mac_last))
 
     def get_mac_address_left(self):
         return self.mac_max - self.mac_last
 
-    def check_enough_mac_adress(self, quantity):
+    def check_enough_mac_adress(self, quantity, device):
         # Returns true if remaining MAC adress number is bigger than requested quantity
-        return (self.get_mac_address_left() - quantity) >= 0
+        if device.wifi and device.bt :
+            # Si WIFI et BT alors on a besoin du double d'addresses
+            return (self.get_mac_address_left() - (2 * quantity)) >= 0
+        else:
+            return (self.get_mac_address_left() - quantity) >= 0
 
     def __repr__(self, *args, **kwargs):
         return str(self.devices)
@@ -234,7 +237,12 @@ class Device(object):
 
     def check_enough_imeis_adress(self, size=0):
         # Returns True if num_imei + qty < 1000000; otherwise returns False
-        return (self.last_imei + size) < 1000000
+        if self.sim_number == 1 :
+            return (self.last_imei + size) < 1000000
+        elif self.sim_number == 2:
+            return (self.last_imei + (2 * size)) < 1000000
+        else:
+            return True
 
     def get_imei_left(self):
         return 1000000 - self.last_imei

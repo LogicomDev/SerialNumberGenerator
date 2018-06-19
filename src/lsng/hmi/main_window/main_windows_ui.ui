@@ -45,7 +45,196 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgba(250, 250, 250, 250);</string>
+   <string notr="true">QMainWindow{
+	background-color: rgb(255, 255, 255);
+}
+
+QLabel{
+	color: rgb(140, 140, 140);
+	background-color: rgb(255, 255, 255);
+}
+
+QLineEdit, QLineEdit:hover{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #dddddd;
+    background-color:rgba(0,0,0,0);
+}
+
+QLineEdit:editable{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #b2dfdb;
+}
+
+QLineEdit:disabled{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+QLineEdit:focus{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+    color: #111111;
+}
+QLineEdit:pressed{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+}
+
+QSpinBox, QSpinBox:hover{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #dddddd;
+    background-color:rgba(0,0,0,0);
+}
+
+QSpinBox:editable{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #b2dfdb;
+}
+
+QLineEdit:disabled{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+QSpinBox:focus{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+    color: #111111;
+}
+
+QSpinBox:pressed{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+}
+
+QProgressBar{
+    background-color: rgb(230, 230, 230);;	
+    border-radius: 5px;
+}
+
+QProgressBar::chunk{
+	background-color: rgb(130, 186, 23);
+	width: 20px;
+}
+
+QPushButton, QPushButton:focus{
+  border: none;
+  color: black;
+  padding: 3px 20px
+}
+
+QPushButton:hover, QPushButton:hover:focus{
+  background-color: rgb(130, 186, 23);
+  border-color: #ffffff
+}
+
+QPushButton:disabled{
+	background-color: rgb(131, 186, 23);
+    border: none
+}
+
+QTreeWidget{
+	background-color: rgb(150,150, 150);
+	color:rgb(255, 255, 255);
+}
+
+QTreeWidget:item:hover,QTreeWidget:item:focus{
+	background-color: rgb(58, 176, 0);
+}
+
+QTableWidget {
+    background-color: white;
+	selection-background-color: rgb(150,150, 150);
+}
+
+QTableWidgetItem:hover{
+    background-color: rgb(0, 170, 255);
+}
+
+QSlider::groove:horizontal{
+    border: 1px solid #999999;
+    height: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
+    margin: 2px 0;
+}
+
+QSlider::handle:horizontal{
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+    border: 1px solid #5c5c5c;
+    width: 18px;
+    margin: -2px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}
+
+QSlider::groove:vertical{
+    background: red;
+    position: absolute; /* absolutely position 4px from the left and right of the widget. setting margins on the widget should work too... */
+    left: 4px; right: 4px;
+}
+
+QSlider::handle:vertical{
+    height: 10px;
+    background: green;
+    margin: 0 -4px; /* expand outside the groove */
+}
+
+QSlider::add-page:vertical{
+    background: white;
+}
+
+QSlider::sub-page:vertical{
+    background: pink;
+}
+
+QGroupBox{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(217, 217, 217);
+	border-radius: 25px;
+}
+
+QCheckBox, QCheckBox:hover{
+	border: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #dddddd;
+    background-color:rgba(0,0,0,0);
+}
+
+QCheckBox:editable{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #b2dfdb;
+}
+
+QCheckBox:disabled{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+QCheckBox:focus{
+    border: 0px solid white;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+    color: #111111;
+}
+
+QCheckBox:pressed{
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
+}
+
+</string>
   </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonFollowStyle</enum>
@@ -77,6 +266,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
        <number>0</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMaximumSize</enum>
       </property>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -127,6 +319,7 @@
           <property name="font">
            <font>
             <family>Roboto</family>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
@@ -151,16 +344,12 @@
           <property name="font">
            <font>
             <family>Roboto</family>
+            <weight>75</weight>
+            <bold>true</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QTreeWidget{
-	background-color: rgb(247, 247, 247);
-}
-
-QTreeWidget:item:hover,QTreeWidget:item:focus {
-	background-color: rgb(58, 176, 0);
-}</string>
+           <string notr="true"/>
           </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
@@ -285,28 +474,7 @@ QTreeWidget:item:hover,QTreeWidget:item:focus {
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton, QPushButton:focus, QPushButton:focus {
-  border: none;
-  color: black;
-  padding: 3px 20px
-}
-
-QPushButton:hover, QPushButton:hover:focus {
-  background-color: rgb(131, 186, 23);
-  border-color: #ffffff
-}
-
-QPushButton:pressed,
-QPushButton:pressed:focus {
-  background-color: #2196f3;
-  border: none;
-  color: white
-}
-
-QPushButton:disabled {
-background-color: rgb(131, 186, 23);
-    border: none
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Add Supplier</string>
@@ -340,28 +508,7 @@ background-color: rgb(131, 186, 23);
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton, QPushButton:focus, QPushButton:focus {
-  border: none;
-  color: black;
-  padding: 3px 20px
-}
-
-QPushButton:hover, QPushButton:hover:focus {
-  background-color: rgb(131, 186, 23);
-  border-color: #ffffff
-}
-
-QPushButton:pressed,
-QPushButton:pressed:focus {
-  background-color: #2196f3;
-  border: none;
-  color: white
-}
-
-QPushButton:disabled {
-background-color: rgb(131, 186, 23);
-    border: none
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Add Device</string>
@@ -385,6 +532,12 @@ background-color: rgb(131, 186, 23);
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
         <property name="topMargin">
          <number>0</number>
         </property>
@@ -431,19 +584,26 @@ background-color: rgb(131, 186, 23);
             </property>
             <property name="minimumSize">
              <size>
-              <width>150</width>
+              <width>200</width>
               <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="font">
              <font>
               <family>Roboto Black</family>
+              <pointsize>10</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(180, 180, 180);</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Color</string>
@@ -463,19 +623,26 @@ background-color: rgb(131, 186, 23);
             </property>
             <property name="minimumSize">
              <size>
-              <width>150</width>
+              <width>200</width>
               <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="font">
              <font>
               <family>Roboto Black</family>
+              <pointsize>10</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(180, 180, 180);</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>PO Number</string>
@@ -485,105 +652,33 @@ background-color: rgb(131, 186, 23);
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QSpinBox" name="sp_mac_left">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+          <item row="8" column="0">
+           <widget class="QLabel" name="lbl_prod_date">
             <property name="minimumSize">
              <size>
-              <width>0</width>
-              <height>30</height>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="font">
              <font>
-              <family>Roboto</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QSpinBox, QSpinBox:hover {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QSpinBox:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-    font-size: 20px;
-}
-
-QLineEdit:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QSpinBox:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-QSpinBox:pressed {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
-</string>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="maximum">
-             <number>1000000000</number>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="0">
-           <widget class="QLabel" name="lbl_prod_date">
-            <property name="font">
-             <font>
               <family>Roboto Black</family>
+              <pointsize>10</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(180, 180, 180);</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Production week / year</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="font">
-             <font>
-              <family>Roboto Black</family>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(180, 180, 180);</string>
-            </property>
-            <property name="text">
-             <string>Supplier code / Model code</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -604,6 +699,12 @@ QSpinBox:pressed {
               <height>30</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
@@ -611,38 +712,10 @@ QSpinBox:pressed {
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QSpinBox, QSpinBox:hover {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QSpinBox:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-    font-size: 20px;
-}
-
-QLineEdit:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QSpinBox:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-QSpinBox:pressed {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
-</string>
+             <string notr="true"/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
             </property>
             <property name="buttonSymbols">
              <enum>QAbstractSpinBox::PlusMinus</enum>
@@ -655,23 +728,158 @@ QSpinBox:pressed {
             </property>
            </widget>
           </item>
+          <item row="3" column="1">
+           <widget class="QSpinBox" name="sp_mac_left">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="maximum">
+             <number>1000000000</number>
+            </property>
+           </widget>
+          </item>
           <item row="3" column="0">
            <widget class="QLabel" name="lbl_mac_left">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto Black</family>
+              <pointsize>10</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(180, 180, 180);</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>MAC / IMEIs address left</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lbl_connect">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Black</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Connected as</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QSpinBox" name="sp_imei_left">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="maximum">
+             <number>1000000000</number>
             </property>
            </widget>
           </item>
@@ -696,88 +904,33 @@ QSpinBox:pressed {
             </property>
            </spacer>
           </item>
-          <item row="3" column="2">
-           <widget class="QSpinBox" name="sp_imei_left">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_2">
             <property name="minimumSize">
              <size>
-              <width>0</width>
-              <height>30</height>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="font">
              <font>
-              <family>Roboto</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QSpinBox, QSpinBox:hover {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QSpinBox:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-    font-size: 20px;
-}
-
-QLineEdit:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QSpinBox:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-QSpinBox:pressed {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
-</string>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="maximum">
-             <number>1000000000</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="lbl_connect">
-            <property name="font">
-             <font>
               <family>Roboto Black</family>
+              <pointsize>10</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(180, 180, 180);</string>
+             <string notr="true"/>
             </property>
             <property name="text">
-             <string>Connected as</string>
+             <string>Supplier code / Model code</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -786,6 +939,27 @@ QSpinBox:pressed {
           </item>
           <item row="7" column="3">
            <spacer name="horizontalSpacer_2">
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+             </font>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Maximum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>100</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="3" column="3">
+           <spacer name="horizontalSpacer_7">
             <property name="font">
              <font>
               <family>Roboto</family>
@@ -840,6 +1014,12 @@ QSpinBox:pressed {
               <height>30</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
@@ -847,38 +1027,10 @@ QSpinBox:pressed {
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QSpinBox, QSpinBox:hover {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QSpinBox:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-    font-size: 20px;
-}
-
-QLineEdit:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QSpinBox:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-QSpinBox:pressed {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
-</string>
+             <string notr="true"/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
             </property>
             <property name="buttonSymbols">
              <enum>QAbstractSpinBox::PlusMinus</enum>
@@ -891,123 +1043,6 @@ QSpinBox:pressed {
             </property>
             <property name="value">
              <number>18</number>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="3">
-           <spacer name="horizontalSpacer_7">
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-             </font>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Maximum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>100</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="7" column="1" colspan="2">
-           <widget class="QLineEdit" name="txt_color">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit, QLineEdit:hover {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QLineEdit:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-
-}
-
-QLineEdit:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QLineEdit:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-QLineEdit:pressed {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
-</string>
-            </property>
-            <property name="inputMask">
-             <string/>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="maxLength">
-             <number>32767</number>
-            </property>
-            <property name="placeholderText">
-             <string>Fill me</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" colspan="2">
-           <widget class="QLabel" name="txt_user">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Unknown User</string>
             </property>
            </widget>
           </item>
@@ -1025,6 +1060,12 @@ QLineEdit:pressed {
               <height>30</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
@@ -1032,43 +1073,105 @@ QLineEdit:pressed {
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLineEdit, QLineEdit:hover {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QLineEdit:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-}
-
-QLineEdit:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QLineEdit:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-QLineEdit:pressed {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
-</string>
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>203000</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="dragEnabled">
+             <bool>true</bool>
+            </property>
+            <property name="placeholderText">
+             <string>Fill me</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1" colspan="2">
+           <widget class="QLineEdit" name="txt_color">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhUppercaseOnly</set>
+            </property>
+            <property name="inputMask">
+             <string/>
             </property>
             <property name="text">
              <string/>
             </property>
+            <property name="maxLength">
+             <number>32767</number>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="dragEnabled">
+             <bool>true</bool>
+            </property>
             <property name="placeholderText">
-             <string>Fill me</string>
+             <string>BLACK/GOLD/ETC...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="QLabel" name="txt_user">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Unknown User</string>
             </property>
            </widget>
           </item>
@@ -1114,6 +1217,39 @@ QLineEdit:pressed {
             </property>
            </spacer>
           </item>
+          <item row="10" column="0">
+           <widget class="QLabel" name="lbl_qty">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Black</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Quantity</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
           <item row="10" column="1" colspan="2">
            <widget class="QSpinBox" name="sp_qty">
             <property name="sizePolicy">
@@ -1128,6 +1264,12 @@ QLineEdit:pressed {
               <height>30</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
@@ -1135,38 +1277,10 @@ QLineEdit:pressed {
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QSpinBox, QSpinBox:hover {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QSpinBox:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-    font-size: 20px;
-}
-
-QLineEdit:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QSpinBox:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-QSpinBox:pressed {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
-</string>
+             <string notr="true"/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
             </property>
             <property name="buttonSymbols">
              <enum>QAbstractSpinBox::PlusMinus</enum>
@@ -1200,26 +1314,6 @@ QSpinBox:pressed {
             </property>
            </spacer>
           </item>
-          <item row="10" column="0">
-           <widget class="QLabel" name="lbl_qty">
-            <property name="font">
-             <font>
-              <family>Roboto Black</family>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(180, 180, 180);</string>
-            </property>
-            <property name="text">
-             <string>Quantity</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
           <item row="4" column="2">
            <widget class="QLineEdit" name="txt_model">
             <property name="sizePolicy">
@@ -1234,6 +1328,12 @@ QSpinBox:pressed {
               <height>30</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
@@ -1241,38 +1341,10 @@ QSpinBox:pressed {
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLineEdit, QLineEdit:hover {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QLineEdit:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-    font-size: 20px;
-}
-
-QLineEdit:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QLineEdit:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-QLineEdit:pressed {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
-</string>
+             <string notr="true"/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
             </property>
             <property name="readOnly">
              <bool>true</bool>
@@ -1296,6 +1368,12 @@ QLineEdit:pressed {
               <height>30</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
@@ -1303,41 +1381,13 @@ QLineEdit:pressed {
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLineEdit, QLineEdit:hover {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QLineEdit:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-    font-size: 20px;
-}
-
-QLineEdit:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QLineEdit:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-QLineEdit:pressed {
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
-</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
             </property>
             <property name="readOnly">
              <bool>true</bool>
@@ -1347,12 +1397,80 @@ QLineEdit:pressed {
             </property>
            </widget>
           </item>
+          <item row="11" column="0">
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Black</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Use the &quot;-&quot; seperator for MACs</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="1">
+           <widget class="QCheckBox" name="chk_seperator">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="2" colspan="2">
+           <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <property name="spacing">
            <number>0</number>
+          </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SetMaximumSize</enum>
           </property>
           <property name="topMargin">
            <number>2</number>
@@ -1368,6 +1486,12 @@ QLineEdit:pressed {
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>250</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
@@ -1377,28 +1501,7 @@ QLineEdit:pressed {
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton, QPushButton:focus, QPushButton:focus {
-  border: none;
-  color: black;
-  padding: 3px 20px
-}
-
-QPushButton:hover, QPushButton:hover:focus {
-  background-color: rgb(131, 186, 23);
-  border-color: #ffffff
-}
-
-QPushButton:pressed,
-QPushButton:pressed:focus {
-  background-color: #2196f3;
-  border: none;
-  color: white
-}
-
-QPushButton:disabled {
-background-color: rgb(131, 186, 23);
-    border: none
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Generate Serial Numbers</string>
@@ -1449,14 +1552,7 @@ background-color: rgb(131, 186, 23);
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QTableWidget {
-    background-color: white;
-	selection-background-color: rgb(131, 186, 23);
-}
-
-QTableWidgetItem:hover{
-    background-color: rgb(0, 170, 255);
-}</string>
+           <string notr="true"/>
           </property>
           <property name="frameShape">
            <enum>QFrame::Panel</enum>
@@ -1531,6 +1627,9 @@ QTableWidgetItem:hover{
         </item>
         <item>
          <layout class="QHBoxLayout" name="lyt_unsaved">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetMaximumSize</enum>
+          </property>
           <property name="topMargin">
            <number>2</number>
           </property>
@@ -1586,28 +1685,7 @@ QTableWidgetItem:hover{
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton, QPushButton:focus, QPushButton:focus {
-  border: none;
-  color: black;
-  padding: 3px 20px
-}
-
-QPushButton:hover, QPushButton:hover:focus {
-  background-color: rgb(131, 186, 23);
-  border-color: #ffffff
-}
-
-QPushButton:pressed,
-QPushButton:pressed:focus {
-  background-color: #2196f3;
-  border: none;
-  color: white
-}
-
-QPushButton:disabled {
-background-color: rgb(131, 186, 23);
-    border: none
-}</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Create run report(s) and save Generation(s)</string>

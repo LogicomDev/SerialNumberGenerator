@@ -13,6 +13,7 @@ class Exporter(object):
         else:
             self.exporter = None
 
-    def export_generation(self, generation_obj):
-        filepath = self.exporter.export_generation(generation_obj)
+    def export_generation(self, generation_obj, seperator):
+        print("((")
+        filepath = self.exporter.export_generation(generation_obj, seperator)
         return filepath

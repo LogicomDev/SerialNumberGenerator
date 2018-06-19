@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/lsng/database/sql_handler.py=utf-8
+encoding//src/lsng/hmi/edit_model/edit_model_ui.py=utf-8
+encoding//src/lsng/hmi/login/user_logging_ui.py=utf-8
+encoding//src/lsng/hmi/lsng_hmi.py=utf-8
+encoding//src/lsng/hmi/main_window/main_windows_ui.py=utf-8
+encoding/lsng.py=utf-8

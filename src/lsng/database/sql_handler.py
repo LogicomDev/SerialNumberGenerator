@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 
 # Global imports
-import sqlite3
+#import sqlite3
+import MySQLdb
 import time
 import os
 
 # Local imports
 from src.lsng.helpers import singleton, untextify_mac
 from src.lsng.database.models import User, Database, GenerationData, GenerationRunBasic
-
-DATABASE_NAME = "logicom_database.db"
 
 
 def load_json():
@@ -34,12 +33,12 @@ class SQLHandler(object):
     '''
     database = None
 
-    def __init__(self, database_path=DATABASE_NAME):
+    def __init__(self):
         '''
         Init the Database and cursor so we can deal with SQL database
         '''
         self.logfile = "query_log.txt"
-        self.database = sqlite3.connect(database_path)
+        self.database = MySQLdb.connect("pma","Jeremy","VuLYG7rdDhWrQdeh","serials" )
         self.cursor = self.database.cursor()
         if not self.check_table_presence():
             self.create_table()
@@ -196,7 +195,7 @@ class SQLHandler(object):
         device_id, po_number, quantity, color, prod_year, prod_week,
         first_serial, last_serial, first_imei1, last_imei1, first_imei2, last_imei2,
         first_wifi, last_wifi, first_bt, last_bt, date, created_by)
-        VALUES ('{}', '{}', '{}', '{}', '{}','{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')""".format(
+        VALUES ('{}', '{}', '{}', '{}', '{}','{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');""".format(
             generation_obj.device.id,
             generation_obj.po_number,
             generation_obj.qty,
@@ -231,7 +230,9 @@ class SQLHandler(object):
         return db_devices
 
     def read_generations_summary(self):
+        # Could be written with device_id as a parameter
         cmd = """SELECT * FROM updates;"""
+        #cmd = """SELECT * FROM updates where device_id={item};"""
         self.exec_cmd(cmd)
         db_generations = self.cursor.fetchall()
         return db_generations

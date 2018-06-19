@@ -59,7 +59,7 @@ class GenerationHandler(QThread):
         self.last_imei = 0
         self.last_serial = 0
 
-        if not self.supplier.check_enough_mac_adress(self.qty):
+        if not self.supplier.check_enough_mac_adress(self.qty, self.device):
             raise NoMoreMACAdressAvailable
 
         if not self.device.check_enough_imeis_adress(self.qty):
@@ -111,6 +111,9 @@ class GenerationHandler(QThread):
                 current_generation.wifi = self.supplier.mac_last + idx + 1
             elif not self.device.wifi and self.device.bt:
                 current_generation.bt = self.supplier.mac_last + idx + 1
+            else:
+                current_generation.bt = None
+                current_generation.wifi = None
 
             self.event_trace.emit(str(current_generation))
             self.generated_values.append(current_generation)
