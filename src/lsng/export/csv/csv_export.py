@@ -16,25 +16,11 @@ class CSVHandler(object):
         '''
         Constructor
         '''
-        self.basefolder = os.path.join(parent.basefolder,  "Traceability")
         self.event_trace = pyqtSignal(str)
+        self.file_extension = "csv"
 
-    def export_generation(self, generation_obj, seperator):
+    def export_generation(self, filename, generation_obj, seperator):
         str_generation = []
-        if not os.path.isdir(self.basefolder):
-            os.mkdir(self.basefolder)
-            
-        currentfolder = os.path.join(self.basefolder, "PO{}".format(generation_obj.po_number))
-        if not os.path.isdir(currentfolder):
-            os.mkdir(currentfolder)
-
-        filename = os.path.join(currentfolder, "PO{}_{}_{}_{}_{}.csv".format(generation_obj.po_number, generation_obj.supplier.name,
-                                                                               generation_obj.device.name, generation_obj.color,
-                                                                               generation_obj.qty))
-        if os.path.isfile(filename):
-            # What to do when the file already exists ?
-            print("filename already exists. Updating name.")
-            filename = filename.replace(".csv", "_2.csv")
             
         for generated_sn in generation_obj.generated_values:
             str_generation.append("{}; {}; {}; {}; {}".format(generated_sn.serial,

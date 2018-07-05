@@ -281,6 +281,7 @@ class LogicomSerialGenerator(QMainWindow):
         self.uic.prg_generation.setValue(value)
 
     def update_selected_item(self):
+        print("update selected")
         item_name = self.uic.tree_devices.currentItem().text(0)
         if self.db.get_device(item_name):
             # Only update data if you select a device
@@ -308,23 +309,31 @@ class LogicomSerialGenerator(QMainWindow):
                                         raw_generation.get("qty"))
         generation.generated_values = raw_generation.get("values")
 
-        self.save_generation(generation)
-        self.create_generation_reports(generation)
+        try:
+            self.save_generation_summary(generation)
+            self.create_generation_reports(generation)
+        except:
+            self.log.add_trace("Error")
+            # Must do a rollback on Database
+#             self.sql_db.rollback()
 
+        item_index = self.uic.tree_devices.currentItem()
+        
         # Clears the generation buffer
         self.generation_infos_visibility(False)
         self.set_generation_info_enabled(True)
         self.load_database()
+        
+        self.release_generation_button()
+        self.uic.tree_devices.setCurrentItem(item_index)
 
-    def save_generation(self, generation):
+    def save_generation_summary(self, generation):
         '''
-        Save the generation results to the SQL database
+        Save the generation summary to the SQL database
         '''
-        self.log.add_trace("Saving generation for {}-{}-{}".format(generation.po_number, generation.color, generation.qty))
-        print("&&&")
+        self.log.add_trace("Saving generation summary for {}-{}-{}".format(generation.po_number, generation.color, generation.qty))
         self.sql_db.add_generation(generation, self.user)
         self.log.add_trace("Saving successful")
-        print("---")
 
     def create_generation_reports(self, generation):
         if self.uic.chk_seperator.isChecked():
@@ -333,7 +342,7 @@ class LogicomSerialGenerator(QMainWindow):
             mac_seperator = ":"
         self.log.add_trace("Creating CSV generation report for {}-{}-{}".format(generation.po_number, generation.color, generation.qty))
         path = self.exporter.export_generation(generation, mac_seperator)
-        self.log.add_trace("Creation of generation report successful.")
+        self.log.add_trace("Creation of generation report successful")
         self.log.add_trace("File path is : {}".format(path))
 
     def add_error_trace(self, msg):
