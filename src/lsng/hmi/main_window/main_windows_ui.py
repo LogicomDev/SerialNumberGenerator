@@ -25,18 +25,16 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap("res/lsng_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setAutoFillBackground(False)
-        MainWindow.setStyleSheet("QMainWindow\n"
-"{\n"
-"background-color: rgb(255, 255, 255);\n"
+        MainWindow.setStyleSheet("QMainWindow{\n"
+"    background-color: rgb(255, 255, 255);\n"
 "}\n"
 "\n"
-"QLabel\n"
-"{\n"
-"color: rgb(138, 138, 138);\n"
-"background-color: rgb(255, 255, 255);\n"
+"QLabel{\n"
+"    color: rgb(140, 140, 140);\n"
+"    background-color: rgb(255, 255, 255);\n"
 "}\n"
 "\n"
-"QLineEdit, QLineEdit:hover {\n"
+"QLineEdit, QLineEdit:hover{\n"
 "    border: none;\n"
 "    padding-bottom: 2px;\n"
 "    border-bottom: 1px solid #dddddd;\n"
@@ -61,13 +59,13 @@ class Ui_MainWindow(object):
 "    border-bottom: 2px solid #00695c;\n"
 "    color: #111111;\n"
 "}\n"
-"QLineEdit:pressed {\n"
+"QLineEdit:pressed{\n"
 "    border: none;\n"
 "    padding-bottom: 2px;\n"
 "    border-bottom: 2px solid #00695c;\n"
 "}\n"
 "\n"
-"QSpinBox, QSpinBox:hover {\n"
+"QSpinBox, QSpinBox:hover{\n"
 "    border: none;\n"
 "    padding-bottom: 2px;\n"
 "    border-bottom: 1px solid #dddddd;\n"
@@ -92,35 +90,36 @@ class Ui_MainWindow(object):
 "    border-bottom: 2px solid #00695c;\n"
 "    color: #111111;\n"
 "}\n"
-"QSpinBox:pressed {\n"
+"\n"
+"QSpinBox:pressed{\n"
 "    border: none;\n"
 "    padding-bottom: 2px;\n"
 "    border-bottom: 2px solid #00695c;\n"
 "}\n"
 "\n"
-"QProgressBar {\n"
+"QProgressBar{\n"
 "    background-color: rgb(230, 230, 230);;    \n"
 "    border-radius: 5px;\n"
 "}\n"
 "\n"
-"QProgressBar::chunk {\n"
-"  background-color: rgb(130, 186, 23);\n"
+"QProgressBar::chunk{\n"
+"    background-color: rgb(130, 186, 23);\n"
 "    width: 20px;\n"
 "}\n"
 "\n"
-"QPushButton, QPushButton:focus {\n"
+"QPushButton, QPushButton:focus{\n"
 "  border: none;\n"
 "  color: black;\n"
 "  padding: 3px 20px\n"
 "}\n"
 "\n"
-"QPushButton:hover, QPushButton:hover:focus {\n"
+"QPushButton:hover, QPushButton:hover:focus{\n"
 "  background-color: rgb(130, 186, 23);\n"
 "  border-color: #ffffff\n"
 "}\n"
 "\n"
-"QPushButton:disabled {\n"
-"background-color: rgb(131, 186, 23);\n"
+"QPushButton:disabled{\n"
+"    background-color: rgb(131, 186, 23);\n"
 "    border: none\n"
 "}\n"
 "\n"
@@ -129,7 +128,7 @@ class Ui_MainWindow(object):
 "    color:rgb(255, 255, 255);\n"
 "}\n"
 "\n"
-"QTreeWidget:item:hover,QTreeWidget:item:focus {\n"
+"QTreeWidget:item:hover,QTreeWidget:item:focus{\n"
 "    background-color: rgb(58, 176, 0);\n"
 "}\n"
 "\n"
@@ -142,14 +141,14 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 170, 255);\n"
 "}\n"
 "\n"
-"QSlider::groove:horizontal {\n"
+"QSlider::groove:horizontal{\n"
 "    border: 1px solid #999999;\n"
 "    height: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */\n"
 "    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);\n"
 "    margin: 2px 0;\n"
 "}\n"
 "\n"
-"QSlider::handle:horizontal {\n"
+"QSlider::handle:horizontal{\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);\n"
 "    border: 1px solid #5c5c5c;\n"
 "    width: 18px;\n"
@@ -157,33 +156,33 @@ class Ui_MainWindow(object):
 "    border-radius: 3px;\n"
 "}\n"
 "\n"
-"QSlider::groove:vertical {\n"
+"QSlider::groove:vertical{\n"
 "    background: red;\n"
 "    position: absolute; /* absolutely position 4px from the left and right of the widget. setting margins on the widget should work too... */\n"
 "    left: 4px; right: 4px;\n"
 "}\n"
 "\n"
-"QSlider::handle:vertical {\n"
+"QSlider::handle:vertical{\n"
 "    height: 10px;\n"
 "    background: green;\n"
 "    margin: 0 -4px; /* expand outside the groove */\n"
 "}\n"
 "\n"
-"QSlider::add-page:vertical {\n"
+"QSlider::add-page:vertical{\n"
 "    background: white;\n"
 "}\n"
 "\n"
-"QSlider::sub-page:vertical {\n"
+"QSlider::sub-page:vertical{\n"
 "    background: pink;\n"
 "}\n"
 "\n"
 "QGroupBox{\n"
-"background-color: rgb(255, 255, 255);\n"
-"border: 2px solid rgb(217, 217, 217);\n"
-"border-radius: 25px;\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border: 2px solid rgb(217, 217, 217);\n"
+"    border-radius: 25px;\n"
 "}\n"
 "\n"
-"QCheckBox, QCheckBox:hover {\\n    border: none;\\n    padding-bottom: 2px;\\n    border-bottom: 1px solid #dddddd;\\n    background-color:rgba(0,0,0,0);\\n}\\n\\nQCheckBox:editable{\\n    border: none;\\n    padding-bottom: 2px;\\n    border-bottom: 2px solid #b2dfdb;\\n\\n}\\n\\nQCheckBox:disabled{\\n    border: 0px solid white;\\n    padding-bottom: 2px;\\n    border-bottom: 2px solid #eeeeee;\\n}\\n\\nQCheckBox:focus{\\n    border: 0px solid white;\\n    padding-bottom: 2px;\\n    border-bottom: 2px solid #00695c;\\n    color: #111111;\\n}\\n\\nQCheckBox:pressed {\\n    border: none;\\n    padding-bottom: 2px;\\n    border-bottom: 2px solid #00695c;\\n}\\n\n"
+"\n"
 "")
         MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonFollowStyle)
         MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
@@ -256,7 +255,8 @@ class Ui_MainWindow(object):
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
         self.verticalLayout_6.addWidget(self.tree_devices)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setContentsMargins(-1, 2, -1, 2)
+        self.horizontalLayout_3.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.btn_add_supplier = QtWidgets.QPushButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
@@ -313,24 +313,19 @@ class Ui_MainWindow(object):
         self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.gridLayout.setContentsMargins(12, 2, -1, 2)
         self.gridLayout.setObjectName("gridLayout")
-        self.lbl_color = QtWidgets.QLabel(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lbl_color.sizePolicy().hasHeightForWidth())
-        self.lbl_color.setSizePolicy(sizePolicy)
-        self.lbl_color.setMinimumSize(QtCore.QSize(200, 0))
-        self.lbl_color.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.lbl_prod_date = QtWidgets.QLabel(self.centralwidget)
+        self.lbl_prod_date.setMinimumSize(QtCore.QSize(200, 0))
+        self.lbl_prod_date.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
         font.setFamily("Roboto Black")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.lbl_color.setFont(font)
-        self.lbl_color.setStyleSheet("")
-        self.lbl_color.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.lbl_color.setObjectName("lbl_color")
-        self.gridLayout.addWidget(self.lbl_color, 7, 0, 1, 1)
+        self.lbl_prod_date.setFont(font)
+        self.lbl_prod_date.setStyleSheet("")
+        self.lbl_prod_date.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.lbl_prod_date.setObjectName("lbl_prod_date")
+        self.gridLayout.addWidget(self.lbl_prod_date, 8, 0, 1, 1)
         self.lbl_po_number = QtWidgets.QLabel(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -349,19 +344,37 @@ class Ui_MainWindow(object):
         self.lbl_po_number.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.lbl_po_number.setObjectName("lbl_po_number")
         self.gridLayout.addWidget(self.lbl_po_number, 6, 0, 1, 1)
-        self.lbl_prod_date = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_prod_date.setMinimumSize(QtCore.QSize(200, 0))
-        self.lbl_prod_date.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.lbl_color = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lbl_color.sizePolicy().hasHeightForWidth())
+        self.lbl_color.setSizePolicy(sizePolicy)
+        self.lbl_color.setMinimumSize(QtCore.QSize(200, 0))
+        self.lbl_color.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
         font.setFamily("Roboto Black")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.lbl_prod_date.setFont(font)
-        self.lbl_prod_date.setStyleSheet("")
-        self.lbl_prod_date.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.lbl_prod_date.setObjectName("lbl_prod_date")
-        self.gridLayout.addWidget(self.lbl_prod_date, 8, 0, 1, 1)
+        self.lbl_color.setFont(font)
+        self.lbl_color.setStyleSheet("")
+        self.lbl_color.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.lbl_color.setObjectName("lbl_color")
+        self.gridLayout.addWidget(self.lbl_color, 7, 0, 1, 1)
+        self.lbl_mac_left = QtWidgets.QLabel(self.centralwidget)
+        self.lbl_mac_left.setMinimumSize(QtCore.QSize(200, 0))
+        self.lbl_mac_left.setMaximumSize(QtCore.QSize(200, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Roboto Black")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_mac_left.setFont(font)
+        self.lbl_mac_left.setStyleSheet("")
+        self.lbl_mac_left.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.lbl_mac_left.setObjectName("lbl_mac_left")
+        self.gridLayout.addWidget(self.lbl_mac_left, 3, 0, 1, 1)
         self.sp_week = QtWidgets.QSpinBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -369,7 +382,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.sp_week.sizePolicy().hasHeightForWidth())
         self.sp_week.setSizePolicy(sizePolicy)
         self.sp_week.setMinimumSize(QtCore.QSize(0, 30))
-        self.sp_week.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.sp_week.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setPointSize(11)
@@ -388,7 +401,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.sp_mac_left.sizePolicy().hasHeightForWidth())
         self.sp_mac_left.setSizePolicy(sizePolicy)
         self.sp_mac_left.setMinimumSize(QtCore.QSize(0, 30))
-        self.sp_mac_left.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.sp_mac_left.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setPointSize(11)
@@ -400,19 +413,6 @@ class Ui_MainWindow(object):
         self.sp_mac_left.setMaximum(1000000000)
         self.sp_mac_left.setObjectName("sp_mac_left")
         self.gridLayout.addWidget(self.sp_mac_left, 3, 1, 1, 1)
-        self.lbl_mac_left = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_mac_left.setMinimumSize(QtCore.QSize(200, 0))
-        self.lbl_mac_left.setMaximumSize(QtCore.QSize(200, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Black")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbl_mac_left.setFont(font)
-        self.lbl_mac_left.setStyleSheet("")
-        self.lbl_mac_left.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.lbl_mac_left.setObjectName("lbl_mac_left")
-        self.gridLayout.addWidget(self.lbl_mac_left, 3, 0, 1, 1)
         self.lbl_connect = QtWidgets.QLabel(self.centralwidget)
         self.lbl_connect.setMinimumSize(QtCore.QSize(200, 0))
         self.lbl_connect.setMaximumSize(QtCore.QSize(200, 16777215))
@@ -426,28 +426,6 @@ class Ui_MainWindow(object):
         self.lbl_connect.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.lbl_connect.setObjectName("lbl_connect")
         self.gridLayout.addWidget(self.lbl_connect, 1, 0, 1, 1)
-        self.sp_imei_left = QtWidgets.QSpinBox(self.centralwidget)
-        self.sp_imei_left.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.sp_imei_left.sizePolicy().hasHeightForWidth())
-        self.sp_imei_left.setSizePolicy(sizePolicy)
-        self.sp_imei_left.setMinimumSize(QtCore.QSize(0, 30))
-        self.sp_imei_left.setMaximumSize(QtCore.QSize(100, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(11)
-        self.sp_imei_left.setFont(font)
-        self.sp_imei_left.setStyleSheet("")
-        self.sp_imei_left.setFrame(False)
-        self.sp_imei_left.setReadOnly(True)
-        self.sp_imei_left.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
-        self.sp_imei_left.setMaximum(1000000000)
-        self.sp_imei_left.setObjectName("sp_imei_left")
-        self.gridLayout.addWidget(self.sp_imei_left, 3, 2, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem1, 4, 3, 1, 1)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setMinimumSize(QtCore.QSize(200, 0))
         self.label_2.setMaximumSize(QtCore.QSize(200, 16777215))
@@ -461,89 +439,6 @@ class Ui_MainWindow(object):
         self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 4, 0, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem2, 7, 3, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem3, 3, 3, 1, 1)
-        spacerItem4 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem4, 8, 3, 1, 1)
-        self.sp_year = QtWidgets.QSpinBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.sp_year.sizePolicy().hasHeightForWidth())
-        self.sp_year.setSizePolicy(sizePolicy)
-        self.sp_year.setMinimumSize(QtCore.QSize(0, 30))
-        self.sp_year.setMaximumSize(QtCore.QSize(100, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(11)
-        self.sp_year.setFont(font)
-        self.sp_year.setStyleSheet("")
-        self.sp_year.setFrame(False)
-        self.sp_year.setButtonSymbols(QtWidgets.QAbstractSpinBox.PlusMinus)
-        self.sp_year.setMinimum(18)
-        self.sp_year.setMaximum(99)
-        self.sp_year.setProperty("value", 18)
-        self.sp_year.setObjectName("sp_year")
-        self.gridLayout.addWidget(self.sp_year, 8, 2, 1, 1)
-        self.txt_po_number = QtWidgets.QLineEdit(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.txt_po_number.sizePolicy().hasHeightForWidth())
-        self.txt_po_number.setSizePolicy(sizePolicy)
-        self.txt_po_number.setMinimumSize(QtCore.QSize(0, 30))
-        self.txt_po_number.setMaximumSize(QtCore.QSize(200, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(11)
-        self.txt_po_number.setFont(font)
-        self.txt_po_number.setStyleSheet("")
-        self.txt_po_number.setFrame(False)
-        self.txt_po_number.setDragEnabled(True)
-        self.txt_po_number.setObjectName("txt_po_number")
-        self.gridLayout.addWidget(self.txt_po_number, 6, 1, 1, 2)
-        self.txt_color = QtWidgets.QLineEdit(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.txt_color.sizePolicy().hasHeightForWidth())
-        self.txt_color.setSizePolicy(sizePolicy)
-        self.txt_color.setMinimumSize(QtCore.QSize(0, 30))
-        self.txt_color.setMaximumSize(QtCore.QSize(200, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(11)
-        self.txt_color.setFont(font)
-        self.txt_color.setStyleSheet("")
-        self.txt_color.setInputMethodHints(QtCore.Qt.ImhUppercaseOnly)
-        self.txt_color.setInputMask("")
-        self.txt_color.setText("")
-        self.txt_color.setMaxLength(32767)
-        self.txt_color.setFrame(False)
-        self.txt_color.setDragEnabled(True)
-        self.txt_color.setObjectName("txt_color")
-        self.gridLayout.addWidget(self.txt_color, 7, 1, 1, 2)
-        self.txt_user = QtWidgets.QLabel(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.txt_user.sizePolicy().hasHeightForWidth())
-        self.txt_user.setSizePolicy(sizePolicy)
-        self.txt_user.setMinimumSize(QtCore.QSize(0, 30))
-        self.txt_user.setMaximumSize(QtCore.QSize(300, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(11)
-        self.txt_user.setFont(font)
-        self.txt_user.setStyleSheet("")
-        self.txt_user.setObjectName("txt_user")
-        self.gridLayout.addWidget(self.txt_user, 1, 1, 1, 2)
-        spacerItem5 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem5, 6, 3, 1, 1)
-        spacerItem6 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem6, 1, 3, 1, 1)
         self.lbl_qty = QtWidgets.QLabel(self.centralwidget)
         self.lbl_qty.setMinimumSize(QtCore.QSize(200, 0))
         self.lbl_qty.setMaximumSize(QtCore.QSize(200, 16777215))
@@ -557,62 +452,6 @@ class Ui_MainWindow(object):
         self.lbl_qty.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.lbl_qty.setObjectName("lbl_qty")
         self.gridLayout.addWidget(self.lbl_qty, 10, 0, 1, 1)
-        self.sp_qty = QtWidgets.QSpinBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.sp_qty.sizePolicy().hasHeightForWidth())
-        self.sp_qty.setSizePolicy(sizePolicy)
-        self.sp_qty.setMinimumSize(QtCore.QSize(0, 30))
-        self.sp_qty.setMaximumSize(QtCore.QSize(200, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(11)
-        self.sp_qty.setFont(font)
-        self.sp_qty.setStyleSheet("")
-        self.sp_qty.setFrame(False)
-        self.sp_qty.setButtonSymbols(QtWidgets.QAbstractSpinBox.PlusMinus)
-        self.sp_qty.setMinimum(1)
-        self.sp_qty.setMaximum(100000)
-        self.sp_qty.setObjectName("sp_qty")
-        self.gridLayout.addWidget(self.sp_qty, 10, 1, 1, 2)
-        spacerItem7 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem7, 10, 3, 1, 1)
-        self.txt_model = QtWidgets.QLineEdit(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.txt_model.sizePolicy().hasHeightForWidth())
-        self.txt_model.setSizePolicy(sizePolicy)
-        self.txt_model.setMinimumSize(QtCore.QSize(0, 30))
-        self.txt_model.setMaximumSize(QtCore.QSize(100, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(11)
-        self.txt_model.setFont(font)
-        self.txt_model.setStyleSheet("")
-        self.txt_model.setFrame(False)
-        self.txt_model.setReadOnly(True)
-        self.txt_model.setObjectName("txt_model")
-        self.gridLayout.addWidget(self.txt_model, 4, 2, 1, 1)
-        self.txt_supplier = QtWidgets.QLineEdit(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.txt_supplier.sizePolicy().hasHeightForWidth())
-        self.txt_supplier.setSizePolicy(sizePolicy)
-        self.txt_supplier.setMinimumSize(QtCore.QSize(0, 30))
-        self.txt_supplier.setMaximumSize(QtCore.QSize(100, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(11)
-        self.txt_supplier.setFont(font)
-        self.txt_supplier.setStyleSheet("")
-        self.txt_supplier.setText("")
-        self.txt_supplier.setFrame(False)
-        self.txt_supplier.setReadOnly(True)
-        self.txt_supplier.setObjectName("txt_supplier")
-        self.gridLayout.addWidget(self.txt_supplier, 4, 1, 1, 1)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setMinimumSize(QtCore.QSize(200, 0))
         self.label.setMaximumSize(QtCore.QSize(200, 16777215))
@@ -625,6 +464,24 @@ class Ui_MainWindow(object):
         self.label.setStyleSheet("")
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 11, 0, 1, 1)
+        self.txt_supplier = QtWidgets.QLineEdit(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txt_supplier.sizePolicy().hasHeightForWidth())
+        self.txt_supplier.setSizePolicy(sizePolicy)
+        self.txt_supplier.setMinimumSize(QtCore.QSize(0, 30))
+        self.txt_supplier.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(11)
+        self.txt_supplier.setFont(font)
+        self.txt_supplier.setStyleSheet("")
+        self.txt_supplier.setText("")
+        self.txt_supplier.setFrame(False)
+        self.txt_supplier.setReadOnly(True)
+        self.txt_supplier.setObjectName("txt_supplier")
+        self.gridLayout.addWidget(self.txt_supplier, 4, 1, 1, 1)
         self.chk_seperator = QtWidgets.QCheckBox(self.centralwidget)
         self.chk_seperator.setMinimumSize(QtCore.QSize(0, 30))
         self.chk_seperator.setMaximumSize(QtCore.QSize(100, 16777215))
@@ -632,8 +489,151 @@ class Ui_MainWindow(object):
         self.chk_seperator.setText("")
         self.chk_seperator.setObjectName("chk_seperator")
         self.gridLayout.addWidget(self.chk_seperator, 11, 1, 1, 1)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem1, 1, 3, 1, 1)
+        self.txt_model = QtWidgets.QLineEdit(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txt_model.sizePolicy().hasHeightForWidth())
+        self.txt_model.setSizePolicy(sizePolicy)
+        self.txt_model.setMinimumSize(QtCore.QSize(0, 30))
+        self.txt_model.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(11)
+        self.txt_model.setFont(font)
+        self.txt_model.setStyleSheet("")
+        self.txt_model.setFrame(False)
+        self.txt_model.setReadOnly(True)
+        self.txt_model.setObjectName("txt_model")
+        self.gridLayout.addWidget(self.txt_model, 4, 2, 1, 1)
+        self.txt_user = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txt_user.sizePolicy().hasHeightForWidth())
+        self.txt_user.setSizePolicy(sizePolicy)
+        self.txt_user.setMinimumSize(QtCore.QSize(0, 30))
+        self.txt_user.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(11)
+        self.txt_user.setFont(font)
+        self.txt_user.setStyleSheet("")
+        self.txt_user.setObjectName("txt_user")
+        self.gridLayout.addWidget(self.txt_user, 1, 1, 1, 2)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem2, 4, 3, 1, 1)
+        self.sp_imei_left = QtWidgets.QSpinBox(self.centralwidget)
+        self.sp_imei_left.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.sp_imei_left.sizePolicy().hasHeightForWidth())
+        self.sp_imei_left.setSizePolicy(sizePolicy)
+        self.sp_imei_left.setMinimumSize(QtCore.QSize(0, 30))
+        self.sp_imei_left.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(11)
+        self.sp_imei_left.setFont(font)
+        self.sp_imei_left.setStyleSheet("")
+        self.sp_imei_left.setFrame(False)
+        self.sp_imei_left.setReadOnly(True)
+        self.sp_imei_left.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.sp_imei_left.setMaximum(1000000000)
+        self.sp_imei_left.setObjectName("sp_imei_left")
+        self.gridLayout.addWidget(self.sp_imei_left, 3, 2, 1, 1)
+        self.txt_po_number = QtWidgets.QLineEdit(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txt_po_number.sizePolicy().hasHeightForWidth())
+        self.txt_po_number.setSizePolicy(sizePolicy)
+        self.txt_po_number.setMinimumSize(QtCore.QSize(0, 30))
+        self.txt_po_number.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(11)
+        self.txt_po_number.setFont(font)
+        self.txt_po_number.setStyleSheet("")
+        self.txt_po_number.setFrame(False)
+        self.txt_po_number.setDragEnabled(True)
+        self.txt_po_number.setObjectName("txt_po_number")
+        self.gridLayout.addWidget(self.txt_po_number, 6, 1, 1, 2)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem3, 6, 3, 1, 1)
+        self.sp_year = QtWidgets.QSpinBox(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.sp_year.sizePolicy().hasHeightForWidth())
+        self.sp_year.setSizePolicy(sizePolicy)
+        self.sp_year.setMinimumSize(QtCore.QSize(0, 30))
+        self.sp_year.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(11)
+        self.sp_year.setFont(font)
+        self.sp_year.setStyleSheet("")
+        self.sp_year.setFrame(False)
+        self.sp_year.setButtonSymbols(QtWidgets.QAbstractSpinBox.PlusMinus)
+        self.sp_year.setMinimum(18)
+        self.sp_year.setMaximum(99)
+        self.sp_year.setProperty("value", 18)
+        self.sp_year.setObjectName("sp_year")
+        self.gridLayout.addWidget(self.sp_year, 8, 2, 1, 1)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem4, 8, 3, 1, 1)
+        self.sp_qty = QtWidgets.QSpinBox(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.sp_qty.sizePolicy().hasHeightForWidth())
+        self.sp_qty.setSizePolicy(sizePolicy)
+        self.sp_qty.setMinimumSize(QtCore.QSize(0, 30))
+        self.sp_qty.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(11)
+        self.sp_qty.setFont(font)
+        self.sp_qty.setStyleSheet("")
+        self.sp_qty.setFrame(False)
+        self.sp_qty.setButtonSymbols(QtWidgets.QAbstractSpinBox.PlusMinus)
+        self.sp_qty.setMinimum(1)
+        self.sp_qty.setMaximum(100000)
+        self.sp_qty.setObjectName("sp_qty")
+        self.gridLayout.addWidget(self.sp_qty, 10, 1, 1, 1)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem5, 10, 2, 1, 2)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem6, 11, 2, 1, 2)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem7, 3, 3, 1, 1)
+        self.txt_color = QtWidgets.QLineEdit(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txt_color.sizePolicy().hasHeightForWidth())
+        self.txt_color.setSizePolicy(sizePolicy)
+        self.txt_color.setMinimumSize(QtCore.QSize(0, 30))
+        self.txt_color.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(11)
+        self.txt_color.setFont(font)
+        self.txt_color.setStyleSheet("")
+        self.txt_color.setInputMethodHints(QtCore.Qt.ImhUppercaseOnly)
+        self.txt_color.setInputMask("")
+        self.txt_color.setText("")
+        self.txt_color.setMaxLength(32767)
+        self.txt_color.setFrame(False)
+        self.txt_color.setDragEnabled(True)
+        self.txt_color.setObjectName("txt_color")
+        self.gridLayout.addWidget(self.txt_color, 7, 1, 1, 2)
         spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem8, 11, 2, 1, 2)
+        self.gridLayout.addItem(spacerItem8, 7, 3, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
@@ -675,6 +675,8 @@ class Ui_MainWindow(object):
         self.txt_log = QtWidgets.QTableWidget(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Roboto")
+        font.setBold(True)
+        font.setWeight(75)
         self.txt_log.setFont(font)
         self.txt_log.setStyleSheet("")
         self.txt_log.setFrameShape(QtWidgets.QFrame.Panel)
@@ -709,12 +711,6 @@ class Ui_MainWindow(object):
         self.lyt_unsaved.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
         self.lyt_unsaved.setContentsMargins(-1, 2, -1, 0)
         self.lyt_unsaved.setObjectName("lyt_unsaved")
-        self.lbl_info_pool_unsaved = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        self.lbl_info_pool_unsaved.setFont(font)
-        self.lbl_info_pool_unsaved.setObjectName("lbl_info_pool_unsaved")
-        self.lyt_unsaved.addWidget(self.lbl_info_pool_unsaved)
         self.lbl_pool_unsaved = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -749,17 +745,14 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.txt_po_number, self.txt_color)
         MainWindow.setTabOrder(self.txt_color, self.sp_week)
-        MainWindow.setTabOrder(self.sp_week, self.sp_year)
-        MainWindow.setTabOrder(self.sp_year, self.sp_qty)
+        MainWindow.setTabOrder(self.sp_week, self.sp_qty)
         MainWindow.setTabOrder(self.sp_qty, self.btn_generate)
         MainWindow.setTabOrder(self.btn_generate, self.txt_log)
         MainWindow.setTabOrder(self.txt_log, self.tree_devices)
         MainWindow.setTabOrder(self.tree_devices, self.btn_save)
         MainWindow.setTabOrder(self.btn_save, self.sp_mac_left)
-        MainWindow.setTabOrder(self.sp_mac_left, self.sp_imei_left)
-        MainWindow.setTabOrder(self.sp_imei_left, self.txt_supplier)
-        MainWindow.setTabOrder(self.txt_supplier, self.txt_model)
-        MainWindow.setTabOrder(self.txt_model, self.btn_add_supplier)
+        MainWindow.setTabOrder(self.sp_mac_left, self.txt_supplier)
+        MainWindow.setTabOrder(self.txt_supplier, self.btn_add_supplier)
         MainWindow.setTabOrder(self.btn_add_supplier, self.btn_add_device)
 
     def retranslateUi(self, MainWindow):
@@ -787,26 +780,25 @@ class Ui_MainWindow(object):
         self.tree_devices.setSortingEnabled(__sortingEnabled)
         self.btn_add_supplier.setText(_translate("MainWindow", "Add Supplier"))
         self.btn_add_device.setText(_translate("MainWindow", "Add Device"))
-        self.lbl_color.setText(_translate("MainWindow", "Color"))
-        self.lbl_po_number.setText(_translate("MainWindow", "PO Number"))
         self.lbl_prod_date.setText(_translate("MainWindow", "Production week / year"))
+        self.lbl_po_number.setText(_translate("MainWindow", "PO Number"))
+        self.lbl_color.setText(_translate("MainWindow", "Color"))
         self.lbl_mac_left.setText(_translate("MainWindow", "MAC / IMEIs address left"))
         self.lbl_connect.setText(_translate("MainWindow", "Connected as"))
         self.label_2.setText(_translate("MainWindow", "Supplier code / Model code"))
+        self.lbl_qty.setText(_translate("MainWindow", "Quantity"))
+        self.label.setText(_translate("MainWindow", "Use the \"-\" seperator for MACs"))
+        self.txt_supplier.setPlaceholderText(_translate("MainWindow", "00"))
+        self.txt_model.setPlaceholderText(_translate("MainWindow", "00"))
+        self.txt_user.setText(_translate("MainWindow", "Unknown User"))
         self.txt_po_number.setText(_translate("MainWindow", "203000"))
         self.txt_po_number.setPlaceholderText(_translate("MainWindow", "Fill me"))
         self.txt_color.setPlaceholderText(_translate("MainWindow", "BLACK/GOLD/ETC..."))
-        self.txt_user.setText(_translate("MainWindow", "Unknown User"))
-        self.lbl_qty.setText(_translate("MainWindow", "Quantity"))
-        self.txt_model.setPlaceholderText(_translate("MainWindow", "00"))
-        self.txt_supplier.setPlaceholderText(_translate("MainWindow", "00"))
-        self.label.setText(_translate("MainWindow", "Use the \"-\" seperator for MACs"))
         self.btn_generate.setText(_translate("MainWindow", "Generate Serial Numbers"))
         item = self.txt_log.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Time"))
         item = self.txt_log.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Info"))
-        self.lbl_info_pool_unsaved.setText(_translate("MainWindow", "Unsaved modification (generations) :"))
         self.lbl_pool_unsaved.setText(_translate("MainWindow", "TextLabel"))
         self.btn_save.setText(_translate("MainWindow", "Create run report(s) and save Generation(s)"))
 

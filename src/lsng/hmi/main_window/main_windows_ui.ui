@@ -202,37 +202,6 @@ QGroupBox{
 	border-radius: 25px;
 }
 
-QCheckBox, QCheckBox:hover{
-	border: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #dddddd;
-    background-color:rgba(0,0,0,0);
-}
-
-QCheckBox:editable{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #b2dfdb;
-}
-
-QCheckBox:disabled{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #eeeeee;
-}
-
-QCheckBox:focus{
-    border: 0px solid white;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-    color: #111111;
-}
-
-QCheckBox:pressed{
-    border: none;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #00695c;
-}
 
 </string>
   </property>
@@ -445,11 +414,14 @@ QCheckBox:pressed{
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
           <property name="topMargin">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="bottomMargin">
-           <number>2</number>
+           <number>0</number>
           </property>
           <item>
            <widget class="QPushButton" name="btn_add_supplier">
@@ -574,14 +546,8 @@ QCheckBox:pressed{
           <property name="bottomMargin">
            <number>2</number>
           </property>
-          <item row="7" column="0">
-           <widget class="QLabel" name="lbl_color">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+          <item row="8" column="0">
+           <widget class="QLabel" name="lbl_prod_date">
             <property name="minimumSize">
              <size>
               <width>200</width>
@@ -606,7 +572,7 @@ QCheckBox:pressed{
              <string notr="true"/>
             </property>
             <property name="text">
-             <string>Color</string>
+             <string>Production week / year</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -652,8 +618,14 @@ QCheckBox:pressed{
             </property>
            </widget>
           </item>
-          <item row="8" column="0">
-           <widget class="QLabel" name="lbl_prod_date">
+          <item row="7" column="0">
+           <widget class="QLabel" name="lbl_color">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>200</width>
@@ -678,7 +650,40 @@ QCheckBox:pressed{
              <string notr="true"/>
             </property>
             <property name="text">
-             <string>Production week / year</string>
+             <string>Color</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="lbl_mac_left">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Black</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>MAC / IMEIs address left</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -701,7 +706,7 @@ QCheckBox:pressed{
             </property>
             <property name="maximumSize">
              <size>
-              <width>100</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -744,7 +749,7 @@ QCheckBox:pressed{
             </property>
             <property name="maximumSize">
              <size>
-              <width>100</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -768,39 +773,6 @@ QCheckBox:pressed{
             </property>
             <property name="maximum">
              <number>1000000000</number>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="lbl_mac_left">
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>200</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto Black</family>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>MAC / IMEIs address left</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -837,73 +809,6 @@ QCheckBox:pressed{
             </property>
            </widget>
           </item>
-          <item row="3" column="2">
-           <widget class="QSpinBox" name="sp_imei_left">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="maximum">
-             <number>1000000000</number>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="3">
-           <spacer name="horizontalSpacer_5">
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-             </font>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Maximum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>100</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="4" column="0">
            <widget class="QLabel" name="label_2">
             <property name="minimumSize">
@@ -937,64 +842,331 @@ QCheckBox:pressed{
             </property>
            </widget>
           </item>
-          <item row="7" column="3">
-           <spacer name="horizontalSpacer_2">
+          <item row="10" column="0">
+           <widget class="QLabel" name="lbl_qty">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Black</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Quantity</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="0">
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto Black</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Use the &quot;-&quot; seperator for MACs</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="txt_supplier">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
+              <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="placeholderText">
+             <string>00</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="1">
+           <widget class="QCheckBox" name="chk_seperator">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <spacer name="horizontalSpacer">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Maximum</enum>
-            </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>100</width>
+              <width>40</width>
               <height>20</height>
              </size>
             </property>
            </spacer>
           </item>
-          <item row="3" column="3">
-           <spacer name="horizontalSpacer_7">
+          <item row="4" column="2">
+           <widget class="QLineEdit" name="txt_model">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
+              <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="placeholderText">
+             <string>00</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="QLabel" name="txt_user">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Unknown User</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="3">
+           <spacer name="horizontalSpacer_3">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Maximum</enum>
-            </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>100</width>
+              <width>40</width>
               <height>20</height>
              </size>
             </property>
            </spacer>
           </item>
-          <item row="8" column="3">
-           <spacer name="horizontalSpacer_6">
+          <item row="3" column="2">
+           <widget class="QSpinBox" name="sp_imei_left">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Roboto</family>
+              <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="maximum">
+             <number>1000000000</number>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1" colspan="2">
+           <widget class="QLineEdit" name="txt_po_number">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>203000</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="dragEnabled">
+             <bool>true</bool>
+            </property>
+            <property name="placeholderText">
+             <string>Fill me</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="3">
+           <spacer name="horizontalSpacer_4">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Maximum</enum>
-            </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>100</width>
+              <width>40</width>
               <height>20</height>
              </size>
             </property>
@@ -1016,7 +1188,7 @@ QCheckBox:pressed{
             </property>
             <property name="maximumSize">
              <size>
-              <width>100</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -1046,8 +1218,21 @@ QCheckBox:pressed{
             </property>
            </widget>
           </item>
-          <item row="6" column="1" colspan="2">
-           <widget class="QLineEdit" name="txt_po_number">
+          <item row="8" column="3">
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="10" column="1">
+           <widget class="QSpinBox" name="sp_qty">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -1062,7 +1247,7 @@ QCheckBox:pressed{
             </property>
             <property name="maximumSize">
              <size>
-              <width>200</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -1075,19 +1260,58 @@ QCheckBox:pressed{
             <property name="styleSheet">
              <string notr="true"/>
             </property>
-            <property name="text">
-             <string>203000</string>
-            </property>
             <property name="frame">
              <bool>false</bool>
             </property>
-            <property name="dragEnabled">
-             <bool>true</bool>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::PlusMinus</enum>
             </property>
-            <property name="placeholderText">
-             <string>Fill me</string>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>100000</number>
             </property>
            </widget>
+          </item>
+          <item row="10" column="2" colspan="2">
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="11" column="2" colspan="2">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="3" column="3">
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item row="7" column="1" colspan="2">
            <widget class="QLineEdit" name="txt_color">
@@ -1105,7 +1329,7 @@ QCheckBox:pressed{
             </property>
             <property name="maximumSize">
              <size>
-              <width>200</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -1141,315 +1365,7 @@ QCheckBox:pressed{
             </property>
            </widget>
           </item>
-          <item row="1" column="1" colspan="2">
-           <widget class="QLabel" name="txt_user">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>300</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Unknown User</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="3">
-           <spacer name="horizontalSpacer">
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-             </font>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Maximum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>100</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="1" column="3">
-           <spacer name="horizontalSpacer_3">
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-             </font>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Maximum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>100</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="10" column="0">
-           <widget class="QLabel" name="lbl_qty">
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>200</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto Black</family>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Quantity</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="1" colspan="2">
-           <widget class="QSpinBox" name="sp_qty">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>200</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::PlusMinus</enum>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>100000</number>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="3">
-           <spacer name="horizontalSpacer_4">
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-             </font>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Maximum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>100</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="4" column="2">
-           <widget class="QLineEdit" name="txt_model">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="placeholderText">
-             <string>00</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="txt_supplier">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="placeholderText">
-             <string>00</string>
-            </property>
-           </widget>
-          </item>
-          <item row="11" column="0">
-           <widget class="QLabel" name="label">
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>200</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto Black</family>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Use the &quot;-&quot; seperator for MACs</string>
-            </property>
-           </widget>
-          </item>
-          <item row="11" column="1">
-           <widget class="QCheckBox" name="chk_seperator">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="11" column="2" colspan="2">
+          <item row="7" column="3">
            <spacer name="horizontalSpacer_8">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -1549,6 +1465,8 @@ QCheckBox:pressed{
           <property name="font">
            <font>
             <family>Roboto</family>
+            <weight>75</weight>
+            <bold>true</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -1637,18 +1555,6 @@ QCheckBox:pressed{
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="lbl_info_pool_unsaved">
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-             </font>
-            </property>
-            <property name="text">
-             <string>Unsaved modification (generations) :</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QLabel" name="lbl_pool_unsaved">
             <property name="font">
              <font>
@@ -1707,16 +1613,13 @@ QCheckBox:pressed{
   <tabstop>txt_po_number</tabstop>
   <tabstop>txt_color</tabstop>
   <tabstop>sp_week</tabstop>
-  <tabstop>sp_year</tabstop>
   <tabstop>sp_qty</tabstop>
   <tabstop>btn_generate</tabstop>
   <tabstop>txt_log</tabstop>
   <tabstop>tree_devices</tabstop>
   <tabstop>btn_save</tabstop>
   <tabstop>sp_mac_left</tabstop>
-  <tabstop>sp_imei_left</tabstop>
   <tabstop>txt_supplier</tabstop>
-  <tabstop>txt_model</tabstop>
   <tabstop>btn_add_supplier</tabstop>
   <tabstop>btn_add_device</tabstop>
  </tabstops>

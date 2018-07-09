@@ -245,7 +245,7 @@ class Device(object):
             return True
 
     def get_imei_left(self):
-        return 1000000 - self.last_imei
+        return 1000000 - self.get_last_imei()
 
     def get_base_tac(self):
         return int(str(self.base_tac_number) + "000000")
@@ -287,7 +287,11 @@ class Device(object):
         return None
 
     def get_last_imei(self):
-        return self.previous_generation.get("last_imei")
+        value = self.previous_generation.get("last_imei", 0)
+        if value:
+            return value
+        else:
+            return 0
 
     def __repr__(self, *args, **kwargs):
         return "Name:{0}, Code:{1:02}, Base TAC:{2}, type:{3}, SIM:{4}, Wifi:{5}, BT:{6}, last_serial:{7:04}".format(self.name, self.code, self.base_tac_number, self.device_type, self.sim_number, self.wifi, self.bt, self.last_serial)

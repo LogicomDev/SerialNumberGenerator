@@ -36,6 +36,7 @@ class GenerationHandler(QThread):
 
     def __init__(self, parent):
         super(GenerationHandler, self).__init__(parent)
+        self.parent = parent
         # This is a list of GenerationData objects
         self.generated_values = []
         # Attributes
@@ -48,6 +49,7 @@ class GenerationHandler(QThread):
         self.qty = None
 
     def load_values(self, supplier, device, po_number, color, prod_week, prod_year, run_qty):
+        self.parent.logger.debug("Loading values in generation handler")
         self.supplier = supplier
         self.device = device
         self.po_number = po_number
@@ -70,6 +72,8 @@ class GenerationHandler(QThread):
         Main function of class.
         Called when calling GenerationHandler.start() in main thread
         '''
+        self.parent.logger.debug("Calling 'run' method of generation_handler")
+        self.generated_values = []
         serial_base = int("{:02}{:02}{:02}{:02}{:05}".format(self.prod_year, self.prod_week, self.supplier.code, self.device.code, 0))
         self.last_serial = self.device.get_previous_generation_for_date(self.prod_year, self.prod_week)
         self.last_imei = self.device.get_last_imei()

@@ -57,10 +57,11 @@ class AddModel(QDialog):
         if not self.uic.txt_name.text():
             QMessageBox.warning(self, 'Error', 'Please enter a name !')
             return
-
-        if not self.uic.sp_tac_code.value() or (len(str(self.uic.sp_tac_code.value())) != 8 ):
-            QMessageBox.warning(self, 'Error', 'Please enter a valid TAC number !')
-            return
+        
+        if self.uic.sp_sim.value() > 0:
+            if not self.uic.sp_tac_code.value() or (len(str(self.uic.sp_tac_code.value())) != 8 ):
+                QMessageBox.warning(self, 'Error', 'Please enter a valid TAC number !')
+                return
 
         self.name = self.uic.txt_name.text()
         self.code = self.uic.sp_code.value()

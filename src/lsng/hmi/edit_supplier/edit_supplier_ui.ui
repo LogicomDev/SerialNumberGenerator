@@ -246,8 +246,11 @@ QCheckBox, QCheckBox:hover {\n    border: none;\n    padding-bottom: 2px;\n    b
       <property name="inputMask">
        <string/>
       </property>
+      <property name="text">
+       <string>00-00-00-00-01</string>
+      </property>
       <property name="placeholderText">
-       <string>AA-BB-CC-DD-EE</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -421,8 +424,11 @@ QCheckBox, QCheckBox:hover {\n    border: none;\n    padding-bottom: 2px;\n    b
       <property name="inputMask">
        <string/>
       </property>
+      <property name="text">
+       <string>00-00-00-00-00</string>
+      </property>
       <property name="placeholderText">
-       <string>AA-BB-CC-DD-EE</string>
+       <string/>
       </property>
      </widget>
     </item>
